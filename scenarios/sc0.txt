@@ -1,0 +1,9 @@
+position distance 0.4
+sensor span 40
+sensor distance 20
+detectors 3
+	detection_deviation rotation_speed	rotation_error detection_deviation
+    0   6   10  10
+    0   6   0   0
+    0   6   0   0
+X
