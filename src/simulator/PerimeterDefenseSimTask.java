@@ -10,20 +10,24 @@ import org.eclipse.swt.widgets.Listener;
 
 import simulator.DetectionSensor.Detection;
 //import simulator.MBDtest.InterceptProcess;
+import simulator.MovementAlgorithms.MovementAlgorithmCreator;
 import utils.Util;
 import view.Drawables;
 import view.Position;
 import view.SimulationTask;
 
 public class PerimeterDefenseSimTask implements SimulationTask {
-	
-	ArrayList<DefensingAgent> agents;
+	private Simulation simulation;
+	private MovementAlgorithmCreator movementAlgorithmCreator = new MovementAlgorithmCreator();
 	private Listener simDoneListener;
 	int minRange = 0;
 
 	public PerimeterDefenseSimTask(String scenatioFileName) {
 		Drawables.reset();		
 		try {
+			// Create simulation
+			simulation = new Simulation();
+
 			// Read simulation scenario
 			BufferedReader in=new BufferedReader(new FileReader(scenatioFileName));
 			String line;
@@ -37,31 +41,32 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 
 			// Create agents
 			int numberOfAgents=Integer.parseInt(in.readLine().split(" ")[1]);
-			agents=new ArrayList<DefensingAgent>(numberOfAgents);
+			//agents=new ArrayList<DefensingAgent>(numberOfAgents);
 			for(int i=0;i<numberOfAgents;i++)
-				agents.add(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , new DetectionSensor(0, sensorRange, sensorSpan ,minRange)));
+
+				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , new DetectionSensor(0, sensorRange, sensorSpan ,minRange)));
 
 			// Set agents configuration
 			int i=0;
 			in.readLine();
 			while((line=in.readLine()).startsWith("\t")){
-				String[] sp=line.split("\t");
-				agents.get(i).setRotationSpeed(Double.parseDouble(sp[1]));
-				agents.get(i).setRotationError(Double.parseDouble(sp[2]));
-				agents.get(i).setDetectionRange(sensorRange);
-				agents.get(i).setDetectionDeviation(Double.parseDouble(sp[3]));
-				agents.get(i).setSerialNumber(i);
+				String[] sp1=line.split("\t");
+				String[] sp = sp1[1].split(",");
+				simulation.getAgents().get(i).setRotationSpeed(Double.parseDouble(sp[0]));
+				simulation.getAgents().get(i).setRotationError(Double.parseDouble(sp[1]));
+				simulation.getAgents().get(i).setDetectionRange(sensorRange);
+				simulation.getAgents().get(i).setDetectionDeviation(Double.parseDouble(sp[2]));
+				simulation.getAgents().get(i).setSerialNumber(i);
 				i++;
 			}
 
-			// TODO: not here
-			agents.get(1).myTurnToMove = true;
-			agents.get(1).detectionSensor.span += 20;
-			agents.get(0).myType = agentType.guarding;
-			agents.get(1).myType = agentType.leading;
-			agents.get(2).myType = agentType.guarding;
+			// Read movement algorithm
+			String movementAlgorithmName = line.split(" ")[2];
+			simulation.movementAlgorithm = movementAlgorithmCreator.Create(movementAlgorithmName);
 
-			for(DefensingAgent df : agents)
+			simulation.InitSimulationSettings();
+
+			for(DefensingAgent df : simulation.getAgents())
 				Drawables.drawables.add(df);		
 
 			in.close();
@@ -84,23 +89,9 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	@Override
 	public void step(double newSpeed) {
 
-		boolean isDangerDetected = false;
-		agentType typeOfAgentWhoDetectTheDanger = agentType.guarding;
+		simulation.Step(newSpeed);
 
-		for(DefensingAgent df : agents) {
-			df.setSpeed(newSpeed);
-			df.step();
-			if (df.dangerDetected)
-			{
-				isDangerDetected = true;
-				typeOfAgentWhoDetectTheDanger = df.myType;
-			}
-		}
-
-		// Change move if in danger
-		if (isDangerDetected) {
-			changeMove(typeOfAgentWhoDetectTheDanger);
-		}
+		PrintEvaluatedPosition();
 
 		// finish
 		if(simDoneListener!=null){
@@ -108,31 +99,24 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 		}
 	}
 
-	private void changeMove(agentType typeOfAgentWhoDetectTheDanger)
-	{
-		if (typeOfAgentWhoDetectTheDanger == agentType.guarding) {
-			for (DefensingAgent da : agents) {
-				if (da.myType == agentType.guarding) {
-					da.myTurnToMove = true;
-				} else if (da.myType == agentType.leading) {
-					da.myTurnToMove = false;
-					da.turnAround();
-				}
-				da.dangerDetected = false;
-			}
-		}
-		else {
-			for (DefensingAgent da : agents) {
-				if (da.myType == agentType.leading) {
-					da.myTurnToMove = true;
-					da.turnAround();
-				} else if (da.myType == agentType.guarding) {
-					da.myTurnToMove = false;
-				}
-				da.dangerDetected = false;
+	private void PrintEvaluatedPosition() {
+		// rows - agent, cols - other agents, [i][i] - > correct position
+		double [][] evaluations;
+
+		for (DefensingAgent agent : simulation.getAgents()) {
+			ArrayList<Detection> agentDetections = agent.detect();
+			for (Detection agentDetection :agentDetections) {
+				//double evaluation = agentDetection.
 			}
 		}
 	}
+
+	private Position CalculateEvaluatedPosition(Position detectedAgentPosition, Position evaluatedAgentPosition)
+	{
+		return new Position(0, 0);
+	}
+
+
 
 	private void sortByThreat(ArrayList<Detection> detectedFoes) {
 		Collections.sort(detectedFoes,new Comparator<Detection>() {

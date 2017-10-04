@@ -2,6 +2,7 @@ package simulator;
 
 import java.util.ArrayList;
 
+import org.eclipse.swt.events.GestureEvent;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.graphics.Color;
 
@@ -10,16 +11,34 @@ import utils.Util;
 import view.Drawables;
 import view.Position;
 import view.SimDrawable;
+import java.util.Random;
 
 public class DetectionSensor implements HeadingDependent{
 	
 	public class Detection{
+		public int agentSerialNumber;
 		public Position position;
 		public double heading;
 		public double speed;
 		public double range;
 		public double azimuth;
 		public DefensingAgent defensingAgent;
+		public double azimuthWithError() {
+			return azimuth * GetRandomError();
+		}
+
+		public double rangeWithError(){
+			return range * GetRandomError();
+		}
+
+		private double GetRandomError()
+		{
+			// 10% error
+			Random rand = new Random();
+			int  n = rand.nextInt(11) + 9;
+			double error = n * 0.1;
+			return error;
+		}
 	}
 	
 	double heading;	// degrees
@@ -78,6 +97,7 @@ public class DetectionSensor implements HeadingDependent{
 						g.speed=a.getSpeed();
 						g.heading=a.getHeading();
 						g.defensingAgent=a;
+						g.agentSerialNumber = ((DefensingAgent) sd).getSerialNumber();
 						d.add(g);						
 					}
 				}
