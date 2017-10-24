@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import javafx.util.Pair;
 import org.eclipse.swt.widgets.Listener;
 
 import simulator.DetectionSensor.Detection;
 //import simulator.MBDtest.InterceptProcess;
+import simulator.LocationAlgorithms.LocationAlgorithmCreator;
 import simulator.MovementAlgorithms.MovementAlgorithmCreator;
 import utils.Util;
 import view.Drawables;
@@ -19,6 +21,7 @@ import view.SimulationTask;
 public class PerimeterDefenseSimTask implements SimulationTask {
 	private Simulation simulation;
 	private MovementAlgorithmCreator movementAlgorithmCreator = new MovementAlgorithmCreator();
+	private LocationAlgorithmCreator locationAlgorithmCreator = new LocationAlgorithmCreator();
 	private Listener simDoneListener;
 	int minRange = 0;
 
@@ -64,6 +67,11 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			String movementAlgorithmName = line.split(" ")[2];
 			simulation.movementAlgorithm = movementAlgorithmCreator.Create(movementAlgorithmName);
 
+			// Read movement algorithm
+			line = in.readLine();
+			String locationAlgorithmName = line.split(" ")[2];
+			simulation.locationAlgorithm = locationAlgorithmCreator.Create(locationAlgorithmName);
+
 			simulation.InitSimulationSettings();
 
 			for(DefensingAgent df : simulation.getAgents())
@@ -89,33 +97,17 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	@Override
 	public void step(double newSpeed) {
 
+		simulation.GetEvaluatedPosition();
+
 		simulation.Step(newSpeed);
 
-		PrintEvaluatedPosition();
+
 
 		// finish
 		if(simDoneListener!=null){
 			simDoneListener.handleEvent(null);
 		}
 	}
-
-	private void PrintEvaluatedPosition() {
-		// rows - agent, cols - other agents, [i][i] - > correct position
-		double [][] evaluations;
-
-		for (DefensingAgent agent : simulation.getAgents()) {
-			ArrayList<Detection> agentDetections = agent.detect();
-			for (Detection agentDetection :agentDetections) {
-				//double evaluation = agentDetection.
-			}
-		}
-	}
-
-	private Position CalculateEvaluatedPosition(Position detectedAgentPosition, Position evaluatedAgentPosition)
-	{
-		return new Position(0, 0);
-	}
-
 
 
 	private void sortByThreat(ArrayList<Detection> detectedFoes) {

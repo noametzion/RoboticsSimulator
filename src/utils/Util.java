@@ -1,6 +1,7 @@
 package utils;
 
 import simulator.DetectionSensor.Detection;
+import view.Position;
 
 public class Util {
 
@@ -48,5 +49,13 @@ public class Util {
 				d=-(360-d);
 			return d;
 		}
-		
+
+		// Angel - > already with heading 180
+		public static Position calulatePositionByAzimuthAndDistance(Position posA, double angelAToB, double distanceAToB){
+			double xB =  posA.x + distanceAToB * Math.cos(Math.toRadians(angelAToB));
+			double yB =  posA.y + distanceAToB * Math.sin(Math.toRadians(angelAToB));
+			Position posB = new Position(xB, yB);
+			return posB;
+
+		}
 }

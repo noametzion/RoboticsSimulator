@@ -7,4 +7,5 @@ detectors 3
 	0,6,0,0
 	20,6,0,0
 movement alg 3forward
+location alg average
 X
