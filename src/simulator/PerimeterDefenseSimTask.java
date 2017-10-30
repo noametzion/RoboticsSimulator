@@ -97,11 +97,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	@Override
 	public void step(double newSpeed) {
 
-		simulation.GetEvaluatedPositions();
-
 		simulation.Step(newSpeed);
-
-
 
 		// finish
 		if(simDoneListener!=null){

@@ -1,4 +1,5 @@
 package simulator.MovementAlgorithms;
+import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
 import simulator.DefensingAgent;
 import simulator.AgentType;
@@ -34,13 +35,15 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
 
         // Change move if in danger
         if (isDangerDetected) {
-            changeMove(typeOfAgentWhoDetectTheDanger, agents);
+            this.ShouldChangeMove = true;
+            this.TypeOfAgentWhoDetectTheDanger = typeOfAgentWhoDetectTheDanger;
+            //changeMove(typeOfAgentWhoDetectTheDanger, agents);
         }
     }
 
-    private void changeMove(AgentType typeOfAgentWhoDetectTheDanger, ArrayList<DefensingAgent> agents)
+    public void ChangeMove(ArrayList<DefensingAgent> agents)
     {
-        if (typeOfAgentWhoDetectTheDanger == AgentType.guarding) {
+        if (this.TypeOfAgentWhoDetectTheDanger == AgentType.guarding) {
             for (DefensingAgent da : agents) {
                 if (da.myType == AgentType.guarding) {
                     da.myTurnToMove = true;
@@ -62,5 +65,8 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
                 da.dangerDetected = false;
             }
         }
+
+        this.ShouldChangeMove = false;
+        this.TypeOfAgentWhoDetectTheDanger = null;
     }
 }

@@ -4,6 +4,7 @@ import simulator.MovementAlgorithms.MovementAlgorithm;
 import view.Position;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javafx.util.Pair;
 
@@ -27,25 +28,46 @@ public class Simulation {
     public void InitSimulationSettings()
     {
         movementAlgorithm.SetAgentsTypes(agents);
+        for (Agent agent: agents) {
+            agent.setEvaluatedPosition(new Position(agent.getPosition().x, agent.getPosition().y));
+        }
     }
 
     public void Step(double newSpeed){
         movementAlgorithm.MakeStep(this.getAgents(), newSpeed);
+        HashMap<Integer, Position> evaluatedPositions = this.GetEvaluatedPositions();
+
+        System.out.println("----------------------");
+        for (Agent agent: this.agents) {
+            //if (!Double.isNaN(positionsEvaluations.get(agent.serialNumber).x) &&
+            // !Double.isNaN(positionsEvaluations.get(agent.serialNumber).y)) {
+            if (((DefensingAgent) agent).myTurnToMove == true){
+                agent.setEvaluatedPosition(evaluatedPositions.get(agent.serialNumber));
+            }
+            System.out.println(agent.getSerialNumber());
+            System.out.println(agent.getPosition().x + " , " + agent.getPosition().y+ "    REAL");
+            System.out.println(agent.getEvaluatedPosition().x + " , " + agent.getEvaluatedPosition().y+ "    EVALUATION");
+        }
+
+        if (movementAlgorithm.ShouldChangeMove) {
+            movementAlgorithm.ChangeMove(this.agents);
+        }
     }
 
-    public List<Pair<Integer, Position>> GetEvaluatedPositions(){
+    public HashMap<Integer, Position> GetEvaluatedPositions(){
         // Get all agents view details
         List<Pair<AgentViewDetails, AgentViewDetails>> detections = this.GetDetections();
 
+        // TODO: use map
         List<Pair<Integer,List<Pair<AgentViewDetails,AgentViewDetails>>>>  detectionsBySerialNumber = this.SplitDetectionsByAgents(detections);
 
-        List<Pair<Integer,Position>> positionsEvaluations = new ArrayList<>();
+        HashMap<Integer,Position> positionsEvaluations = new HashMap<>();
         for (Pair<Integer, List<Pair<AgentViewDetails, AgentViewDetails>>> currentAgentDetections : detectionsBySerialNumber)
         {
             Position evaluatedPos = locationAlgorithm.CalculateEvaluatedPosition(currentAgentDetections.getValue());
-            positionsEvaluations.add(new Pair(currentAgentDetections.getKey() ,evaluatedPos));
-
+            positionsEvaluations.put(currentAgentDetections.getKey() ,evaluatedPos);
         }
+
         return positionsEvaluations;
     }
 
@@ -76,6 +98,7 @@ public class Simulation {
                 }
             }
         }
+
         return detections;
     }
 

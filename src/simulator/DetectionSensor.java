@@ -34,10 +34,11 @@ public class DetectionSensor implements HeadingDependent{
 		private double GetRandomError()
 		{
 			// 10% error
-			Random rand = new Random();
-			int  n = rand.nextInt(20) + 90;
-			double error = n * 0.01;
-			return error;
+			//Random rand = new Random();
+			//int  n = rand.nextInt(20) + 90;
+			//double error = n * 0.01;
+			//return error;
+			return 1;
 		}
 	}
 

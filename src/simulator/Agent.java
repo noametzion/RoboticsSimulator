@@ -15,6 +15,7 @@ public class Agent implements SimDrawable {
     }
 
     Position p;
+    Position evaluatedPosition;
     double heading;	// degrees
     double speed;
     int serialNumber;
@@ -39,6 +40,12 @@ public class Agent implements SimDrawable {
             headingDependents.remove(hd);
     }
 
+    public Position getEvaluatedPosition() {
+        return this.evaluatedPosition;
+    }
+    public void setEvaluatedPosition(Position evPos) {
+        this.evaluatedPosition = evPos;
+    }
     public double getHeading() {
         return heading;
     }
