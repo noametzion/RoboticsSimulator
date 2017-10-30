@@ -26,7 +26,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	int minRange = 0;
 
 	public PerimeterDefenseSimTask(String scenatioFileName) {
-		Drawables.reset();		
+		Drawables.reset();
 		try {
 			// Create simulation
 			simulation = new Simulation();
@@ -40,7 +40,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			double positionDistance =Double.parseDouble(in.readLine().split(" ")[2]);
 			int sensorSpan = Integer.parseInt(in.readLine().split(" ")[2]);
 			int sensorRange = Integer.parseInt(in.readLine().split(" ")[2]);
-			ArrayList<Position> agentPositions = CaculateAgentPositions(positionDistance, sensorRange, sensorSpan);
+			ArrayList<Position> agentPositions = CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
 
 			// Create agents
 			int numberOfAgents=Integer.parseInt(in.readLine().split(" ")[1]);
@@ -59,7 +59,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 				simulation.getAgents().get(i).setRotationError(Double.parseDouble(sp[1]));
 				simulation.getAgents().get(i).setDetectionRange(sensorRange);
 				simulation.getAgents().get(i).setDetectionDeviation(Double.parseDouble(sp[2]));
-				simulation.getAgents().get(i).setSerialNumber(i);
+				simulation.getAgents().get(i).setSerialNumber(i+1);
 				i++;
 			}
 
@@ -75,15 +75,15 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			simulation.InitSimulationSettings();
 
 			for(DefensingAgent df : simulation.getAgents())
-				Drawables.drawables.add(df);		
+				Drawables.drawables.add(df);
 
 			in.close();
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private ArrayList<Position> CaculateAgentPositions(double positionDistance, int sensorRange, int sensorSpan) {
+	private ArrayList<Position> CalculateAgentPositions(double positionDistance, int sensorRange, int sensorSpan) {
 		ArrayList<Position> agentsPositions = new ArrayList<Position>();
 		double maxDistaceBetweenTwoAgents = sensorRange * Math.cos(Math.toRadians(90 - (sensorSpan/2)));
 		double distaceBetweenTwoAgents = maxDistaceBetweenTwoAgents * positionDistance;
@@ -97,7 +97,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	@Override
 	public void step(double newSpeed) {
 
-		simulation.GetEvaluatedPosition();
+		simulation.GetEvaluatedPositions();
 
 		simulation.Step(newSpeed);
 
@@ -120,12 +120,12 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 				return (int)(t1-t2);
 			}
 		});
-		
+
 	}
 
 	@Override
 	public void addSimDoneListener(Listener listener) {
-		simDoneListener=listener;		
+		simDoneListener=listener;
 	}
 
 
