@@ -69,6 +69,10 @@ public class Agent implements SimDrawable {
 		double y1=p.y+speed * Math.sin(Math.toRadians(heading-90));
 		p.x=x1;
 		p.y=y1;
+		if (1==1)
+		{
+
+		}
 	}
 
 	@Override
