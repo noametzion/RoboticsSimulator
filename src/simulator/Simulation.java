@@ -87,11 +87,24 @@ public class Simulation {
         HashMap<Integer,Position> positionsEvaluations = new HashMap<>();
         for (Pair<Integer, List<Pair<AgentViewDetails, AgentViewDetails>>> currentAgentDetections : detectionsBySerialNumber)
         {
-            Position evaluatedPos = locationAlgorithm.CalculateEvaluatedPosition(currentAgentDetections.getValue());
+            List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= getCorrectKeyValuePairsList(currentAgentDetections.getKey().intValue(),currentAgentDetections.getValue());
+            Position evaluatedPos = locationAlgorithm.CalculateEvaluatedPosition(correctKeyValueList);
             positionsEvaluations.put(currentAgentDetections.getKey() ,evaluatedPos);
         }
 
         return positionsEvaluations;
+    }
+    private List<Pair<AgentViewDetails, AgentViewDetails>> getCorrectKeyValuePairsList(int agentId,List<Pair<AgentViewDetails, AgentViewDetails>> oldList){
+        List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= new ArrayList<>();
+        for(Pair<AgentViewDetails, AgentViewDetails> pair: oldList) {
+            if (pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) {
+                AgentViewDetails newKey = pair.getValue();
+                AgentViewDetails newValue = pair.getKey();
+                correctKeyValueList.add(new Pair<>(newKey, newValue));
+            } else
+                correctKeyValueList.add(pair);
+        }
+        return correctKeyValueList;
     }
 
     private List<Pair<AgentViewDetails, AgentViewDetails>> getDetections() {
@@ -135,12 +148,12 @@ public class Simulation {
                 if(viewDetailsPair.getKey() != null && viewDetailsPair.getKey().getAgentNumberTo == i)
                 {
                     currentAgentViewsList.add(viewDetailsPair);
-                    break;
+                    //break;
                 }
                 if(viewDetailsPair.getValue() != null && viewDetailsPair.getValue().getAgentNumberTo == i)
                 {
                     currentAgentViewsList.add(viewDetailsPair);
-                    break;
+                    //break;
                 }
             }
             detectionsBySerialNumber.add(new Pair<>(i, currentAgentViewsList));
