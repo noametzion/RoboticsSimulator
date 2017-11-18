@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="Add print results to file-2">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/boot/Boot.class" afterPath="" />
+    <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/Agent.class" afterPath="$PROJECT_DIR$/bin/simulator/Agent.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/DefensingAgent.class" afterPath="$PROJECT_DIR$/bin/simulator/DefensingAgent.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/DetectionSensor$Detection.class" afterPath="$PROJECT_DIR$/bin/simulator/DetectionSensor$Detection.class" />
@@ -21,24 +20,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$RedrawTask.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$RedrawTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc0.txt" afterPath="$PROJECT_DIR$/scenarios/sc0.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc1.txt" afterPath="$PROJECT_DIR$/scenarios/sc1.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc2.txt" afterPath="$PROJECT_DIR$/scenarios/sc2.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boot/Boot.java" afterPath="$PROJECT_DIR$/src/boot/Boot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boot/RobotExperiment.java" afterPath="$PROJECT_DIR$/src/boot/RobotExperiment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boot/RunExperiments.java" afterPath="$PROJECT_DIR$/src/boot/RunExperiments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/DefensingAgent.java" afterPath="$PROJECT_DIR$/src/simulator/DefensingAgent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/DetectionSensor.java" afterPath="$PROJECT_DIR$/src/simulator/DetectionSensor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/LocationAlgorithmCreator.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/LocationAlgorithmCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/WeightedAverage.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/WeightedAverage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithm.java" afterPath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithm.java" afterPath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java" afterPath="$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/Simulation.java" afterPath="$PROJECT_DIR$/src/simulator/Simulation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/Util.java" afterPath="$PROJECT_DIR$/src/utils/Util.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/MainWindow.java" afterPath="$PROJECT_DIR$/src/view/MainWindow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -695,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1511029289012</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add print results to file-2">
+      <created>1511029520604</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1511029520604</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -788,12 +776,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add generic movement algorithm" />
     <MESSAGE value="Add print results to file" />
-    <MESSAGE value="Add print results to file-2" />
     <MESSAGE value="solving the evaluated position bug(90%)" />
     <MESSAGE value="fix up evaluation position" />
     <MESSAGE value="Add print results to file-3" />
     <MESSAGE value="changing the danger detection to more generic" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing the danger detection to more generic" />
+    <MESSAGE value="Add print results to file-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add print results to file-2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
