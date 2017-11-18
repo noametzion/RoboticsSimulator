@@ -14,7 +14,7 @@ public class RunExperiments {
 	public static void main(String[] args) throws Exception{
 		
 		String outFile="results_roc/out7.txt";
-		String scenarioFile="scenarios/sc7.txt";
+		String scenarioFile="scenarios/sc0.txt";
 		
 		PrintWriter out=new PrintWriter(new FileWriter(outFile));
 		System.out.println("start");

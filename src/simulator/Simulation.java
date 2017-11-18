@@ -51,13 +51,13 @@ public class Simulation {
             movementAlgorithm.ChangeMove(this.agents);
         }
 
-        System.out.println("----------------------");
-        DecimalFormat df = new DecimalFormat("#.#");
-        for (Agent agent : this.agents) {
-            System.out.println(agent.getSerialNumber());
-            System.out.println(df.format(agent.getPosition().x) + " , " + df.format(agent.getPosition().y) + "    REAL");
-            System.out.println(df.format(agent.getEvaluatedPosition().x) + " , " + df.format(agent.getEvaluatedPosition().y) + "    EVALUATION");
-        }
+//        System.out.println("----------------------");
+//        DecimalFormat df = new DecimalFormat("#.#");
+//        for (Agent agent : this.agents) {
+//            System.out.println(agent.getSerialNumber());
+//            System.out.println(df.format(agent.getPosition().x) + " , " + df.format(agent.getPosition().y) + "    REAL");
+//            System.out.println(df.format(agent.getEvaluatedPosition().x) + " , " + df.format(agent.getEvaluatedPosition().y) + "    EVALUATION");
+//        }
     }
     public double getDistanceFromActualLocation(Agent agent){
         double xDistance= agent.getPosition().x - agent.getEvaluatedPosition().x;

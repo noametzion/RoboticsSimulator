@@ -1,6 +1,7 @@
 package boot;
 
 import simulator.PerimeterDefenseSimTask;
+import utils.Util;
 import view.SimulatorWindow;
 
 import java.io.*;
@@ -11,15 +12,15 @@ import java.util.List;
 public class RobotExperiment {
 
     public static void main(String[] args) {
-        int numOfSteps=300;
-        int numofExperimentsPerDeviation=20;
+        int numOfSteps=2000;
+        int numofExperimentsPerDeviation=1;
         int numOfDeviations=40;
-        double minDeviation=-2;
-        double deviationInterval=0.1;
+        double minDeviation=0;
+        double deviationInterval=0.005;
         String results="scenarios\\results.txt";
         String scenarioFile="scenarios/sc0.txt";
         BufferedWriter  writer = null;
-        DecimalFormat df = new DecimalFormat("#.#");
+        DecimalFormat df = new DecimalFormat("#.###");
         try {
             writer = new BufferedWriter(new FileWriter(results));
             writer.write("Deviation      Distance from actual position\n");
@@ -48,7 +49,7 @@ public class RobotExperiment {
             }
             double averageDistance = getAverageList(distances);
             try {
-                writer.write(  df.format(deviation)+ "         " + averageDistance + "\n");
+                writer.write(  df.format(deviation)+ "         " + df.format(averageDistance) + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }

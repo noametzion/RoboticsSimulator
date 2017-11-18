@@ -53,9 +53,32 @@ public class Util {
 	}
 
 	// Angel - > already with heading 180
+//	public static Position calulatePositionByAzimuthAndDistance(Position posA, double angelAToB, double distanceAToB){
+//		double xB =  posA.x + distanceAToB * Math.sin(Math.toRadians(angelAToB));
+//		double yB =  posA.y + distanceAToB * Math.cos(Math.toRadians(angelAToB));
+//		Position posB = new Position(xB, yB);
+//		return posB;
+//
+//	}
 	public static Position calulatePositionByAzimuthAndDistance(Position posA, double angelAToB, double distanceAToB){
-		double xB =  posA.x + distanceAToB * Math.cos(Math.toRadians(angelAToB));
-		double yB =  posA.y + distanceAToB * Math.sin(Math.toRadians(angelAToB));
+		double xB=0;
+		double yB=0;
+		if(angelAToB<=90) {
+			xB = posA.x + distanceAToB * Math.sin(Math.toRadians(angelAToB));
+			yB = posA.y - distanceAToB * Math.cos(Math.toRadians(angelAToB));
+		}
+		else if(angelAToB>90 && angelAToB<=180){
+			xB = posA.x + distanceAToB * Math.sin(Math.toRadians(180-angelAToB));
+			yB = posA.y + distanceAToB * Math.cos(Math.toRadians(180-angelAToB));
+		}
+		else if(angelAToB>180 && angelAToB<=270){
+			xB = posA.x - distanceAToB * Math.sin(Math.toRadians(angelAToB-180));
+			yB = posA.y + distanceAToB * Math.cos(Math.toRadians(angelAToB-180));
+		}
+		else{
+			xB = posA.x - distanceAToB * Math.sin(Math.toRadians(360-angelAToB));
+			yB = posA.y - distanceAToB * Math.cos(Math.toRadians(360-angelAToB));
+		}
 		Position posB = new Position(xB, yB);
 		return posB;
 

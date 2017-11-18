@@ -12,6 +12,12 @@ public class LocationAlgorithmCreator {
         {
             return new AverageLocationAlgorithm();
         }
+        else if(locationAlgorithmName.equals("weightedAverage")){
+            return new WeightedAverage();
+        }
+        else if(locationAlgorithmName.equals("AngelDistanceDeviation")){
+            return new WeightedAverage();
+        }
         else
             throw new Exception("Wrong location algorithm name");
     }
