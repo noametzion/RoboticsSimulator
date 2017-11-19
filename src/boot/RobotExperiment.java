@@ -13,17 +13,17 @@ public class RobotExperiment {
 
     public static void main(String[] args) {
         int numOfSteps=2000;
-        int numofExperimentsPerDeviation=1;
-        int numOfDeviations=40;
+        int numofExperimentsPerDeviation=10;
+        int numOfDeviations=20;
         double minDeviation=0;
-        double deviationInterval=0.005;
+        double deviationInterval=0.01;
         String results="scenarios\\results.txt";
         String scenarioFile="scenarios/sc0.txt";
         BufferedWriter  writer = null;
         DecimalFormat df = new DecimalFormat("#.###");
         try {
             writer = new BufferedWriter(new FileWriter(results));
-            writer.write("Deviation      Distance from actual position\n");
+            writer.write("Deviation   Distance   stdDev\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,8 +48,9 @@ public class RobotExperiment {
 
             }
             double averageDistance = getAverageList(distances);
+            double stdDev= getStdDev(distances);
             try {
-                writer.write(  df.format(deviation)+ "         " + df.format(averageDistance) + "\n");
+                writer.write(  df.format(deviation)+ "    " + df.format(averageDistance) + "    "+ df.format(stdDev) + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -72,6 +73,15 @@ static double getAverageList(List<Double> list){
         sum+= d;
     }
     return sum/list.size();
+}
+static double getStdDev(List<Double> list){
+    double average=getAverageList(list);
+    double temp = 0;
+    for(double a :list)
+        temp += (a-average)*(a-average);
+    double s= Math.sqrt(temp/(list.size()-1));
+    return s;
+
 }
 
 }

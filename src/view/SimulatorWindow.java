@@ -122,7 +122,7 @@ public class SimulatorWindow extends MainWindow{
 						@Override
 						public void run() {
 							//for runing once with boot - uncomment the next line
-							//shell.close();
+//							shell.close();
 							shell.dispose();
 						}
 					});

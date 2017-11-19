@@ -1,4 +1,4 @@
-position distance 0.4
+position distance 0.5
 sensor span 40
 sensor distance 20
 sensor divationdetectors 0.1

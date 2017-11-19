@@ -37,7 +37,7 @@ public class Simulation {
     public void Step(double newSpeed) {
 
         movementAlgorithm.MakeStep(this.getAgents(), newSpeed);
-        HashMap<Integer, Position> evaluatedPositions = this.GetEvaluatedPositions();
+        HashMap<Integer, Position> evaluatedPositions = this.getEvaluatedPositions();
 
 
         for (Agent agent : this.agents) {
@@ -52,7 +52,7 @@ public class Simulation {
         }
 
 //        System.out.println("----------------------");
-//        DecimalFormat df = new DecimalFormat("#.#");
+//        DecimalFormat df = new DecimalFormat("#.##");
 //        for (Agent agent : this.agents) {
 //            System.out.println(agent.getSerialNumber());
 //            System.out.println(df.format(agent.getPosition().x) + " , " + df.format(agent.getPosition().y) + "    REAL");
@@ -60,24 +60,35 @@ public class Simulation {
 //        }
     }
     public double getDistanceFromActualLocation(Agent agent){
-        double xDistance= agent.getPosition().x - agent.getEvaluatedPosition().x;
-        double yDistance= agent.getPosition().y - agent.getEvaluatedPosition().y;
+        if(!Double.isNaN(agent.getEvaluatedPosition().x)) {
+            double xDistance = agent.getPosition().x - agent.getEvaluatedPosition().x;
+            double yDistance = agent.getPosition().y - agent.getEvaluatedPosition().y;
 
-        double distance= Math.sqrt((xDistance*xDistance)+(yDistance*yDistance));
-        return distance;
+            double distance = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));
+            return distance;
+        }
+        else
+            return 0;
     }
     public double getSumAgentsDistanceFromActualLocation(){
         double sumDistance=0;
+        int count=0;
+        double distance=0;
         for (Agent a: agents) {
-            sumDistance+= getDistanceFromActualLocation(a);
+            distance=getDistanceFromActualLocation(a);
+            if(distance>0){
+                sumDistance+=distance;
+                count++;
+            }
+
         }
-        return sumDistance;
+        return sumDistance/count;
     }
 
 
 
 
-    public HashMap<Integer, Position> GetEvaluatedPositions(){
+    public HashMap<Integer, Position> getEvaluatedPositions(){
         // Get all agents view details
         List<Pair<AgentViewDetails, AgentViewDetails>> detections = this.getDetections();
 
