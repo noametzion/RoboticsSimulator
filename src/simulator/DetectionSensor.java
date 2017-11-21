@@ -34,25 +34,13 @@ public class DetectionSensor implements HeadingDependent {
 		}
 
 		public double rangeWithError() {
-			return range * getRandomDistanceError();
+			return range * Util.GetRandomError(errorPercent);
 		}
 
-
-		private double getRandomDistanceError() {
-			if (errorPercent != 0) {
-				Random rand = new Random();
-				int n = rand.nextInt(errorPercent * 2) + (100 - errorPercent);
-				double error = n * 0.01;
-				return error;
-			}
-			return 1;
-		}
-
-
-	//each percentage of deviation is one degree of azimuth error
-	private double getRandomAzimuthError() {
-		double minRange = -errorPercent * 100;
-		double maxRange = errorPercent * 100;
+		//each percentage of deviation is one degree of azimuth error
+		private double getRandomAzimuthError() {
+		double minRange = -errorPercent;
+		double maxRange = errorPercent;
 		Random rand = new Random();
 		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
 		return randValue;
