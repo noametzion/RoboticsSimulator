@@ -76,8 +76,8 @@ public class Agent implements SimDrawable {
     }
 
     public void step(){
-        double x1=p.x+speed * (Math.cos(Math.toRadians(heading-90))* Util.GetRandomError(movementErrorPercent));
-        double y1=p.y+speed * (Math.sin(Math.toRadians(heading-90))*Util.GetRandomError(movementErrorPercent));
+        double x1=p.x+(speed * Math.cos(Math.toRadians(heading-90)))*Util.GetRandomError(movementErrorPercent);
+        double y1=p.y+(speed * Math.sin(Math.toRadians(heading-90)))*Util.GetRandomError(movementErrorPercent);
         p.x=x1;
         p.y=y1;
     }

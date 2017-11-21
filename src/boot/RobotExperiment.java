@@ -9,14 +9,20 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RobotExperiment {
+    public enum DeviationType{
+        movementDeviation,
+        sensorDeviation
+    }
 
     public static void main(String[] args) {
+        DeviationType deviationType = DeviationType.sensorDeviation;
         int numOfSteps=2000;
         int numofExperimentsPerDeviation=10;
         int numOfDeviations=20;
-        double minDeviation=0;
-        double deviationInterval=0.01;
+        int minDeviation=0;
+        int deviationInterval=1;
         String results="scenarios\\results.txt";
         String scenarioFile="scenarios/sc0.txt";
         BufferedWriter  writer = null;
@@ -28,11 +34,26 @@ public class RobotExperiment {
             e.printStackTrace();
         }
 
-        double deviation= minDeviation;
+        int deviation= minDeviation;
+        int deviationSensor = 0;
+        int deviationMovement = 0;
         for(int i=0;i<numOfDeviations;i++) {
             List<Double> distances= new ArrayList<>();
             for (int j = 0; j < numofExperimentsPerDeviation; j++) {
-                SimulatorWindow sw = new SimulatorWindow(800, 500, "my simulator", new PerimeterDefenseSimTask(scenarioFile, deviation), 100, true, true, numOfSteps);
+                switch (deviationType)
+                {
+                    case movementDeviation: {
+                        deviationMovement = deviation;
+                        break;
+                    }
+                    case sensorDeviation:{
+                        deviationSensor = deviation;
+                        break;
+                    }
+                }
+
+                SimulatorWindow sw = new SimulatorWindow(800, 500, "my simulator", new PerimeterDefenseSimTask(scenarioFile, deviationSensor ,deviationMovement), 100, true, true, numOfSteps);
+                sw.isExpiramentMode = true;
                 sw.start();
                 try {
                     sw.join();

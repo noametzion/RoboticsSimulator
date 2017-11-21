@@ -88,10 +88,12 @@ public class Util {
 
 	public static double GetRandomError(int errorPercent)
 	{
-		Random rand = new Random();
-		int  n = rand.nextInt(errorPercent*2) + (100-errorPercent);
-		double error = n * 0.01;
-		//return error;
+		if (errorPercent != 0) {
+			Random rand = new Random();
+			int n = rand.nextInt(errorPercent * 2) + (100 - errorPercent);
+			double error = n * 0.01;
+			return error;
+		}
 		return 1;
 	}
 }

@@ -20,6 +20,7 @@ import simulator.PerimeterDefenseSimTask;
 
 public class SimulatorWindow extends MainWindow{
 
+	public boolean isExpiramentMode = false;
 	Timer timer;
 	TimerTask redrawTask;
 	int rate,scale;
@@ -122,7 +123,9 @@ public class SimulatorWindow extends MainWindow{
 						@Override
 						public void run() {
 							//for runing once with boot - uncomment the next line
-//							shell.close();
+							if(!isExpiramentMode)
+								shell.close();
+
 							shell.dispose();
 						}
 					});
@@ -130,7 +133,6 @@ public class SimulatorWindow extends MainWindow{
 			});
 		}		
 	}
-
 
 	public void close() {
 		stopSimulation();

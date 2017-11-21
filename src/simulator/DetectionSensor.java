@@ -12,56 +12,53 @@ import view.Position;
 import view.SimDrawable;
 import java.util.Random;
 
-public class DetectionSensor implements HeadingDependent{
+public class DetectionSensor implements HeadingDependent {
 
-	public class Detection{
+	public class Detection {
 		public int agentSerialNumber;
 		public Position position;
 		public double heading;
 		public double speed;
 		public double range;
 		public double azimuth;
-		public double deviationError;
+		public int errorPercent;
 		public DefensingAgent defensingAgent;
-		public Detection(double deviationError){
-			this.deviationError=deviationError;
+
+		public Detection(int errorPercent) {
+			this.errorPercent = errorPercent;
 		}
+
 		public double azimuthWithError() {
 
-			return azimuth + getRandomAzimuthError() ;
+			return azimuth + getRandomAzimuthError();
 		}
 
-		public double rangeWithError(){
+		public double rangeWithError() {
 			return range * getRandomDistanceError();
 		}
 
-		private double GetRandomError()
-		{
-			// 10% error
-			//Random rand = new Random();
-			//int  n = rand.nextInt(20) + 90;
-			//double error = n * 0.01;
-			//return error;
+
+		private double getRandomDistanceError() {
+			if (errorPercent != 0) {
+				Random rand = new Random();
+				int n = rand.nextInt(errorPercent * 2) + (100 - errorPercent);
+				double error = n * 0.01;
+				return error;
+			}
 			return 1;
 		}
-		private double getRandomDistanceError(){
-			double minRange= 1- deviationError;
-			double maxRange=1+ deviationError;
-			Random rand= new Random();
-			double randValue = minRange +(maxRange-minRange)* rand.nextDouble();
 
-			return randValue;
-		}
-		//each percentage of deviation is one degree of azimuth error
-		private double getRandomAzimuthError(){
-			double minRange = -deviationError*100;
-			double maxRange = deviationError*100;
-			Random rand= new Random();
-			double randValue = minRange +(maxRange-minRange)* rand.nextDouble();
-			return randValue;
-		}
 
+	//each percentage of deviation is one degree of azimuth error
+	private double getRandomAzimuthError() {
+		double minRange = -errorPercent * 100;
+		double maxRange = errorPercent * 100;
+		Random rand = new Random();
+		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
+		return randValue;
 	}
+
+}
 
 	double heading;	// degrees
 	public double sensorRange;
@@ -69,14 +66,14 @@ public class DetectionSensor implements HeadingDependent{
 	public double sensorSpan;		// degrees
 	int offset;
 	double deviation;
-	double deviationError;
+	int errorPercent;
 
-	public DetectionSensor(int headingOffset,double range, double span,double minRange, double deviation) {
+	public DetectionSensor(int headingOffset,double range, double span,double minRange, int errorPercent) {
 		this.offset=headingOffset;
 		this.sensorRange =range;
 		this.sensorSpan =span;
 		this.minRange=minRange;
-		this.deviationError=deviation;
+		this.errorPercent=errorPercent;
 
 	}
 
@@ -112,7 +109,7 @@ public class DetectionSensor implements HeadingDependent{
 				double azimuth=Util.getAzimuth(p.x, p.y, fp.x,fp.y);
 				if(Util.isInSector(azimuth,heading, sensorSpan)){
 					if(sd instanceof DefensingAgent){
-						Detection g=new Detection(this.deviationError);
+						Detection g=new Detection(this.errorPercent);
 						g.position=sd.getPosition();
 						g.azimuth=azimuth;
 						g.range=r;
