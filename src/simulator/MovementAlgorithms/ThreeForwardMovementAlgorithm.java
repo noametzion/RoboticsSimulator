@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import simulator.DefensingAgent;
 import simulator.AgentType;
 import simulator.DetectionSensor;
+import utils.Util;
+import view.Position;
 
 /**
  * Created by נועם on 10/4/2017.
@@ -81,10 +83,27 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
                     agent.dangerDetected = true;
                 }
             }
+
+//            ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
+//            Position stepForwardPosition = Util.getStepForwardBufferedPosition(agent.getPosition(), agent.getHeading(), 1);
+//            double bufferedRange = agent.detectionSensor.sensorRange - 3;
+//            for (DetectionSensor.Detection detection : allDetections) {
+//                if (!Util.isIntersect(stepForwardPosition,agent.getHeading(), agent.detectionSensor.sensorSpan, bufferedRange, detection.defensingAgent.getEvaluatedPosition())){
+//                    agent.dangerDetected = true;
+//                }
+//            }
         }
         else
         {
             ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
+//            Position stepForwardPosition = Util.getStepForwardBufferedPosition(agent.getPosition(), agent.getHeading(), 1);
+//            double bufferedRange = agent.detectionSensor.sensorRange - 3;
+//            for (DetectionSensor.Detection detection : allDetections) {
+//                if (!Util.isIntersect(stepForwardPosition,agent.getHeading(), agent.detectionSensor.sensorSpan, bufferedRange, detection.defensingAgent.getEvaluatedPosition())){
+//                    agent.dangerDetected = true;
+//                }
+//            }
+
             double maxAzimuth = agent.getHeading() + ((agent.detectionSensor.sensorSpan / 2) - 3);
             double minAzimuth = 360 - agent.getHeading() - ((agent.detectionSensor.sensorSpan / 2) - 3);
             for (DetectionSensor.Detection detection : allDetections) {

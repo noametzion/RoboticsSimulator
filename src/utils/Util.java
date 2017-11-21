@@ -1,7 +1,9 @@
 package utils;
 
 import simulator.DetectionSensor.Detection;
+import view.Drawables;
 import view.Position;
+import view.SimDrawable;
 
 import java.util.Random;
 
@@ -96,4 +98,24 @@ public class Util {
 		}
 		return 1;
 	}
+
+	public static boolean isIntersect(Position sensorPosition, double heading, double span, double range, Position detectionEvaluatedPosition){
+		double minRange = 0;
+		double r=Math.sqrt((sensorPosition.x-detectionEvaluatedPosition.x)*(sensorPosition.x-detectionEvaluatedPosition.x) +
+				(sensorPosition.y-detectionEvaluatedPosition.y)*(sensorPosition.y-detectionEvaluatedPosition.y));
+		if(r>minRange && r<= range){
+			double azimuth=Util.getAzimuth(sensorPosition.x, sensorPosition.y, detectionEvaluatedPosition.x,detectionEvaluatedPosition.y);
+			if(Util.isInSector(azimuth,heading, span)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static Position getStepForwardBufferedPosition(Position p, double heading, double buffer){
+		double x1=p.x + buffer * Math.cos(Math.toRadians(heading-90));
+		double y1=p.y + buffer * Math.sin(Math.toRadians(heading-90));
+		return new Position(x1, y1);
+	}
+
 }

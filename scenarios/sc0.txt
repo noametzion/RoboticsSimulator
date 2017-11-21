@@ -7,6 +7,6 @@ agents 3
 	10,6,10,10
 	0,6,0,0
 	20,6,0,0
-movement alg 3forwardV2
+movement alg 3forward
 location alg average
 X
