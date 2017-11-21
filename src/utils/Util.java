@@ -3,6 +3,8 @@ package utils;
 import simulator.DetectionSensor.Detection;
 import view.Position;
 
+import java.util.Random;
+
 public class Util {
 
 	public static double getAzimuth(double x,double y,double gx,double gy){
@@ -59,5 +61,14 @@ public class Util {
 		Position posB = new Position(xB, yB);
 		return posB;
 
+	}
+
+	public static double GetRandomError(int errorPercent)
+	{
+		Random rand = new Random();
+		int  n = rand.nextInt(errorPercent*2) + (100-errorPercent);
+		double error = n * 0.01;
+		//return error;
+		return 1;
 	}
 }

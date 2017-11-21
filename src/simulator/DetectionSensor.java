@@ -11,7 +11,6 @@ import utils.Util;
 import view.Drawables;
 import view.Position;
 import view.SimDrawable;
-import java.util.Random;
 
 public class DetectionSensor implements HeadingDependent{
 
@@ -23,25 +22,20 @@ public class DetectionSensor implements HeadingDependent{
 		public double range;
 		public double azimuth;
 		public DefensingAgent defensingAgent;
+
 		public double azimuthWithError() {
-			return azimuth * GetRandomError();
+			return azimuth * Util.GetRandomError(azimuthErrorPercent);
 		}
 
 		public double rangeWithError(){
-			return range * GetRandomError();
+			return range * Util.GetRandomError(distanceErrorPercent);
 		}
 
-		private double GetRandomError()
-		{
-			// 10% error
-			//Random rand = new Random();
-			//int  n = rand.nextInt(20) + 90;
-			//double error = n * 0.01;
-			//return error;
-			return 1;
-		}
+
 	}
 
+	int azimuthErrorPercent;
+	int distanceErrorPercent;
 	double heading;	// degrees
 	double range;
 	double minRange;
@@ -49,12 +43,14 @@ public class DetectionSensor implements HeadingDependent{
 	int offset;
 	double deviation;
 
-	public DetectionSensor(int headingOffset,double range, double span,double minRange) {
+	public DetectionSensor(int headingOffset,double range, double span,double minRange, int distanceErrorPercent, int azimuthErrorPercent) {
 		this.offset=headingOffset;
 		this.range=range;
 		this.span=span;
 		this.minRange=minRange;
 		deviation=0;
+		this.distanceErrorPercent = distanceErrorPercent;
+		this.azimuthErrorPercent = azimuthErrorPercent;
 	}
 
 

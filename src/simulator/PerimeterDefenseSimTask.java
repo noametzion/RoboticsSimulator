@@ -46,8 +46,10 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			int numberOfAgents=Integer.parseInt(in.readLine().split(" ")[1]);
 			//agents=new ArrayList<DefensingAgent>(numberOfAgents);
 			for(int i=0;i<numberOfAgents;i++)
-
-				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , new DetectionSensor(0, sensorRange, sensorSpan ,minRange)));
+			{
+				DetectionSensor sensor = new DetectionSensor(0, sensorRange, sensorSpan ,minRange, 10, 10);
+				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , sensor, 10));
+			}
 
 			// Set agents configuration
 			int i=0;

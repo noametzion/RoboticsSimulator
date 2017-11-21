@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.graphics.Color;
 
+import utils.Util;
 import view.Position;
 import view.SimDrawable;
 
@@ -16,16 +17,19 @@ public class Agent implements SimDrawable {
 
     Position p;
     Position evaluatedPosition;
+    //double evaluatedHeading;
     double heading;	// degrees
     double speed;
     int serialNumber;
+    int movementErrorPercent;
 
 
     ArrayList<HeadingDependent> headingDependents;
 
-    public Agent(double x,double y,double heading) {
+    public Agent(double x,double y,double heading, int movementErrorPercent) {
         p=new Position(x, y);
         this.heading=heading;
+        this.movementErrorPercent = movementErrorPercent;
     }
 
     public void addHeadingDependent(HeadingDependent hd){
@@ -72,8 +76,8 @@ public class Agent implements SimDrawable {
     }
 
     public void step(){
-        double x1=p.x+speed * Math.cos(Math.toRadians(heading-90));
-        double y1=p.y+speed * Math.sin(Math.toRadians(heading-90));
+        double x1=p.x+speed * (Math.cos(Math.toRadians(heading-90))* Util.GetRandomError(movementErrorPercent));
+        double y1=p.y+speed * (Math.sin(Math.toRadians(heading-90))*Util.GetRandomError(movementErrorPercent));
         p.x=x1;
         p.y=y1;
     }

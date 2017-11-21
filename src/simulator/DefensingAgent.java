@@ -15,8 +15,8 @@ public class DefensingAgent extends Agent {
 	protected double rotationSpeed;
 	double rotationError;
 
-	public DefensingAgent(double positionX, double positionY, int heading, DetectionSensor sensor) {
-		super(positionX, positionY, heading);
+	public DefensingAgent(double positionX, double positionY, int heading, DetectionSensor sensor, int movementErrorPercent) {
+		super(positionX, positionY, heading, movementErrorPercent);
 		this.detectionSensor = sensor;
 		addHeadingDependent(sensor);
 	}
