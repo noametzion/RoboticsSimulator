@@ -1,13 +1,14 @@
 package simulator;
 
 import java.util.ArrayList;
-import static java.lang.System.out;
+
 import org.eclipse.swt.events.PaintEvent;
 import simulator.DetectionSensor.Detection;
+import utils.Util;
 
 public class DefensingAgent extends Agent {
 
-	DetectionSensor detectionSensor;
+	public DetectionSensor detectionSensor;
 	public boolean myTurnToMove;
 	public boolean dangerDetected;
 	public AgentType myType;
@@ -26,36 +27,12 @@ public class DefensingAgent extends Agent {
 		if(myTurnToMove) {
 			super.step();
 		}
-		else
-		{
-			if (myType == AgentType.guarding) {
-				ArrayList<Detection> allDetections = detect();
-				for (Detection detection : allDetections) {
-					if (detectionSensor.range - detection.range < 2) {
-						out.println("danger");
-						dangerDetected = true;
-					}
-				}
-			}
-			else
-			{
-				ArrayList<Detection> allDetections = detect();
-				double maxAzimuth = this.heading + ((detectionSensor.span / 2) - 3);
-				double minAzimuth = 360 - this.heading - ((detectionSensor.span / 2) - 3);
-				for (Detection detection : allDetections) {
-					if (detection.azimuth >= maxAzimuth || detection.azimuth <= minAzimuth) {
-						out.println("danger");
-						dangerDetected = true;
-					}
-				}
-			}
-		}
 	}
 
 	public void turnAround() {
 		double oldHeading = this.heading;
-		super.setHeading(180 - oldHeading);
-		this.detectionSensor.heading = 180 - oldHeading;
+		super.setHeading(Util.set0to359(oldHeading + 180));
+		this.detectionSensor.heading = Util.set0to359(oldHeading + 180);
 	}
 
 	@Override
@@ -75,7 +52,7 @@ public class DefensingAgent extends Agent {
 	}
 
 	public void setDetectionRange(double range) {
-		detectionSensor.range = range;
+		detectionSensor.sensorRange = range;
 	}
 
 	public void setDetectionDeviation(double deviation) {

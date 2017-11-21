@@ -17,4 +17,6 @@ public abstract class MovementAlgorithm {
     public abstract void SetAgentsTypes(ArrayList<DefensingAgent> agents);
 
     public abstract void ChangeMove(ArrayList<DefensingAgent> agents);
+
+    protected abstract void CheckDanger(DefensingAgent agent);
 }

@@ -3,6 +3,7 @@ import simulator.LocationAlgorithms.ILocationAlgorithm;
 import simulator.MovementAlgorithms.MovementAlgorithm;
 import view.Position;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,30 +34,63 @@ public class Simulation {
         }
     }
 
-    public void Step(double newSpeed){
-        movementAlgorithm.MakeStep(this.getAgents(), newSpeed);
-        HashMap<Integer, Position> evaluatedPositions = this.GetEvaluatedPositions();
+    public void Step(double newSpeed) {
 
-        System.out.println("----------------------");
-        for (Agent agent: this.agents) {
+        movementAlgorithm.MakeStep(this.getAgents(), newSpeed);
+        HashMap<Integer, Position> evaluatedPositions = this.getEvaluatedPositions();
+
+
+        for (Agent agent : this.agents) {
             //if (!Double.isNaN(positionsEvaluations.get(agent.serialNumber).x) &&
             // !Double.isNaN(positionsEvaluations.get(agent.serialNumber).y)) {
-            if (((DefensingAgent) agent).myTurnToMove == true){
+            if (((DefensingAgent) agent).myTurnToMove == true) {
                 agent.setEvaluatedPosition(evaluatedPositions.get(agent.serialNumber));
             }
-            System.out.println(agent.getSerialNumber());
-            System.out.println(agent.getPosition().x + " , " + agent.getPosition().y+ "    REAL");
-            System.out.println(agent.getEvaluatedPosition().x + " , " + agent.getEvaluatedPosition().y+ "    EVALUATION");
         }
-
         if (movementAlgorithm.ShouldChangeMove) {
             movementAlgorithm.ChangeMove(this.agents);
         }
+
+//        System.out.println("----------------------");
+//        DecimalFormat df = new DecimalFormat("#.##");
+//        for (Agent agent : this.agents) {
+//            System.out.println(agent.getSerialNumber());
+//            System.out.println(df.format(agent.getPosition().x) + " , " + df.format(agent.getPosition().y) + "    REAL");
+//            System.out.println(df.format(agent.getEvaluatedPosition().x) + " , " + df.format(agent.getEvaluatedPosition().y) + "    EVALUATION");
+//        }
+    }
+    public double getDistanceFromActualLocation(Agent agent){
+        if(!Double.isNaN(agent.getEvaluatedPosition().x)) {
+            double xDistance = agent.getPosition().x - agent.getEvaluatedPosition().x;
+            double yDistance = agent.getPosition().y - agent.getEvaluatedPosition().y;
+
+            double distance = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));
+            return distance;
+        }
+        else
+            return 0;
+    }
+    public double getSumAgentsDistanceFromActualLocation(){
+        double sumDistance=0;
+        int count=0;
+        double distance=0;
+        for (Agent a: agents) {
+            distance=getDistanceFromActualLocation(a);
+            if(distance>0){
+                sumDistance+=distance;
+                count++;
+            }
+
+        }
+        return sumDistance/count;
     }
 
-    public HashMap<Integer, Position> GetEvaluatedPositions(){
+
+
+
+    public HashMap<Integer, Position> getEvaluatedPositions(){
         // Get all agents view details
-        List<Pair<AgentViewDetails, AgentViewDetails>> detections = this.GetDetections();
+        List<Pair<AgentViewDetails, AgentViewDetails>> detections = this.getDetections();
 
         // TODO: use map
         List<Pair<Integer,List<Pair<AgentViewDetails,AgentViewDetails>>>>  detectionsBySerialNumber = this.SplitDetectionsByAgents(detections);
@@ -64,14 +98,27 @@ public class Simulation {
         HashMap<Integer,Position> positionsEvaluations = new HashMap<>();
         for (Pair<Integer, List<Pair<AgentViewDetails, AgentViewDetails>>> currentAgentDetections : detectionsBySerialNumber)
         {
-            Position evaluatedPos = locationAlgorithm.CalculateEvaluatedPosition(currentAgentDetections.getValue());
+            List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= getCorrectKeyValuePairsList(currentAgentDetections.getKey().intValue(),currentAgentDetections.getValue());
+            Position evaluatedPos = locationAlgorithm.CalculateEvaluatedPosition(correctKeyValueList);
             positionsEvaluations.put(currentAgentDetections.getKey() ,evaluatedPos);
         }
 
         return positionsEvaluations;
     }
+    private List<Pair<AgentViewDetails, AgentViewDetails>> getCorrectKeyValuePairsList(int agentId,List<Pair<AgentViewDetails, AgentViewDetails>> oldList){
+        List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= new ArrayList<>();
+        for(Pair<AgentViewDetails, AgentViewDetails> pair: oldList) {
+            if (pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) {
+                AgentViewDetails newKey = pair.getValue();
+                AgentViewDetails newValue = pair.getKey();
+                correctKeyValueList.add(new Pair<>(newKey, newValue));
+            } else
+                correctKeyValueList.add(pair);
+        }
+        return correctKeyValueList;
+    }
 
-    private List<Pair<AgentViewDetails, AgentViewDetails>> GetDetections() {
+    private List<Pair<AgentViewDetails, AgentViewDetails>> getDetections() {
         // rows - agent, cols - other agents, [i][i] - > correct position
         List<Pair<AgentViewDetails, AgentViewDetails>> detections = new ArrayList<>();
 
@@ -112,12 +159,12 @@ public class Simulation {
                 if(viewDetailsPair.getKey() != null && viewDetailsPair.getKey().getAgentNumberTo == i)
                 {
                     currentAgentViewsList.add(viewDetailsPair);
-                    break;
+                    //break;
                 }
                 if(viewDetailsPair.getValue() != null && viewDetailsPair.getValue().getAgentNumberTo == i)
                 {
                     currentAgentViewsList.add(viewDetailsPair);
-                    break;
+                    //break;
                 }
             }
             detectionsBySerialNumber.add(new Pair<>(i, currentAgentViewsList));

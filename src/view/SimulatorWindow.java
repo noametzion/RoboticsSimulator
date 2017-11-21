@@ -16,12 +16,15 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Scale;
+import simulator.PerimeterDefenseSimTask;
 
 public class SimulatorWindow extends MainWindow{
 
 	Timer timer;
 	TimerTask redrawTask;
 	int rate,scale;
+	int numOfSteps;
+	double sumDistanceFromLocation;
 	boolean simIsRunning,autoStart,grid;
 	SimDisplay sd;
 	SimulationTask st;	
@@ -34,8 +37,28 @@ public class SimulatorWindow extends MainWindow{
 					@Override
 					public void run() {
 						if(!sd.isDisposed()){
+
+								st.step(1);
+								sd.redraw();
+
+						}
+					}
+				});
+		}
+	}
+	private class RedrawTaskExperiment extends TimerTask{
+		@Override
+		public void run() {
+			if(!display.isDisposed())
+				display.syncExec(new Runnable() {
+					@Override
+					public void run() {
+						if(!sd.isDisposed()){
+						  for(int i=0;i<numOfSteps;i++) {
 							st.step(1);
 							sd.redraw();
+							}
+							setSumDistanceFromLocation();
 						}
 					}
 				});
@@ -46,7 +69,23 @@ public class SimulatorWindow extends MainWindow{
 		simIsRunning=true;
 		timer=new Timer();
 		redrawTask=new RedrawTask();
-		timer.scheduleAtFixedRate(redrawTask,0,rate);		
+		timer.scheduleAtFixedRate(redrawTask,0,rate);
+
+	}
+	private void startSimulationForRoboticExperiment(int numOfSteps) {
+		simIsRunning=true;
+		timer=new Timer();
+		redrawTask=new RedrawTaskExperiment();
+		timer.schedule(redrawTask,rate);
+
+
+	}
+	public void setSumDistanceFromLocation(){
+		sumDistanceFromLocation = ((PerimeterDefenseSimTask)st).getSimulation().getSumAgentsDistanceFromActualLocation();
+		}
+
+	public double getSumDistanceFromLocation(){
+		return sumDistanceFromLocation;
 	}
 	
 	private void stopSimulation(){
@@ -61,16 +100,17 @@ public class SimulatorWindow extends MainWindow{
 	public SimulatorWindow(int width, int height, String title,SimulationTask st) {
 		super(width, height, title);
 		this.st=st;
-		scale=1;
+		scale=100;
 		autoStart=false;
 		grid=true;
 	}
 
-	public SimulatorWindow(int width, int height, String title,SimulationTask st,int rate, boolean autoStart,boolean autoClose) {
+	public SimulatorWindow(int width, int height, String title,SimulationTask st,int rate, boolean autoStart,boolean autoClose, int numOfSteps) {
 		super(width, height, title);
 		this.st=st;
 		scale=rate;
 		grid=false;
+		this.numOfSteps=numOfSteps;
 		this.autoStart=autoStart;
 		if(autoClose){
 			st.addSimDoneListener(new Listener() {
@@ -78,10 +118,11 @@ public class SimulatorWindow extends MainWindow{
 				@Override
 				public void handleEvent(Event arg0) {
 					display.asyncExec(new Runnable() {
-						
+
 						@Override
 						public void run() {
-							shell.close();
+							//for runing once with boot - uncomment the next line
+//							shell.close();
 							shell.dispose();
 						}
 					});
@@ -89,7 +130,14 @@ public class SimulatorWindow extends MainWindow{
 			});
 		}		
 	}
-	
+
+
+	public void close() {
+		stopSimulation();
+
+		shell.dispose();
+	}
+
 	@Override
 	protected void initComponents() {
 		shell.setLayout(new GridLayout(2, false));
@@ -134,6 +182,7 @@ public class SimulatorWindow extends MainWindow{
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				startSimulation();
+
 				startButton.setEnabled(false);
 				stopButton.setEnabled(true);
 				sd.setFocus();
@@ -146,7 +195,10 @@ public class SimulatorWindow extends MainWindow{
 		});
 		
 		if(autoStart){
-			startSimulation();
+			//startSimulation();
+			startSimulationForRoboticExperiment(numOfSteps);
+
+
 			startButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			sd.setFocus();

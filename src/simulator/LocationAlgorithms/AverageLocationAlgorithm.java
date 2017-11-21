@@ -68,17 +68,19 @@ public class AverageLocationAlgorithm implements ILocationAlgorithm {
     private double CalculateAverageAngel(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
         double avgAngel = 0;
         if (viewDetailPair.getValue() != null && viewDetailPair.getKey() != null) {
-            avgAngel += Util.getDegDiff(viewDetailPair.getKey().azimuthToOtherAgent, viewDetailPair.getKey().myHeading);
-            avgAngel += Util.set0to359(Util.getDegDiff(viewDetailPair.getValue().azimuthToOtherAgent, viewDetailPair.getValue().myHeading) + 180);
+            avgAngel += viewDetailPair.getKey().azimuthToOtherAgent;
+            avgAngel += Util.set0to359(viewDetailPair.getValue().azimuthToOtherAgent + 180);
             avgAngel = avgAngel/2;
-        }
-        else if(viewDetailPair.getValue() != null)
-        {
-            avgAngel = Util.set0to359(Util.getDegDiff(viewDetailPair.getValue().azimuthToOtherAgent, viewDetailPair.getValue().myHeading));
         }
         else if(viewDetailPair.getKey() != null)
         {
-            avgAngel = Util.set0to359(Util.getDegDiff(viewDetailPair.getKey().azimuthToOtherAgent, viewDetailPair.getKey().myHeading));
+            //avgAngel = Util.set0to359(Util.getDegDiff(viewDetailPair.getValue().azimuthToOtherAgent, viewDetailPair.getValue().myHeading));
+            avgAngel=viewDetailPair.getKey().azimuthToOtherAgent;
+        }
+        else if(viewDetailPair.getValue() != null)
+        {
+            //avgAngel = Util.set0to359(Util.getDegDiff(viewDetailPair.getKey().azimuthToOtherAgent, viewDetailPair.getKey().myHeading));
+            avgAngel=viewDetailPair.getValue().azimuthToOtherAgent;
         }
         return avgAngel;
     }

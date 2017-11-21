@@ -1,14 +1,12 @@
 package simulator.MovementAlgorithms;
-import java.util.ArrayList;
-import simulator.DefensingAgent;
+
 import simulator.AgentType;
+import simulator.DefensingAgent;
 import simulator.DetectionSensor;
 
-/**
- * Created by נועם on 10/4/2017.
- */
-public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
+import java.util.ArrayList;
 
+public class ThreeForwardMovementAlgorithmV2 extends MovementAlgorithm {
     @Override
     public void SetAgentsTypes(ArrayList<DefensingAgent> agents) {
         agents.get(1).myTurnToMove = true;
@@ -34,11 +32,11 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
             }
         }
 
-        // Change move if in danger
+
         if (isDangerDetected) {
             this.ShouldChangeMove = true;
             this.TypeOfAgentWhoDetectTheDanger = typeOfAgentWhoDetectTheDanger;
-            //changeMove(typeOfAgentWhoDetectTheDanger, agents);
+
         }
     }
 
@@ -50,7 +48,6 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
                     da.myTurnToMove = true;
                 } else if (da.myType == AgentType.leading) {
                     da.myTurnToMove = false;
-                    da.turnAround();
                 }
                 da.dangerDetected = false;
             }
@@ -59,7 +56,7 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
             for (DefensingAgent da : agents) {
                 if (da.myType == AgentType.leading) {
                     da.myTurnToMove = true;
-                    da.turnAround();
+
                 } else if (da.myType == AgentType.guarding) {
                     da.myTurnToMove = false;
                 }
@@ -73,26 +70,12 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
 
     @Override
     protected void CheckDanger(DefensingAgent agent) {
-        if (agent.myType == AgentType.guarding) {
-            ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
-            for (DetectionSensor.Detection detection : allDetections) {
-                if (agent.detectionSensor.sensorRange - detection.range < 2) {
-                    //out.println("danger");
-                    agent.dangerDetected = true;
-                }
-            }
-        }
-        else
-        {
-            ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
-            double maxAzimuth = agent.getHeading() + ((agent.detectionSensor.sensorSpan / 2) - 3);
-            double minAzimuth = 360 - agent.getHeading() - ((agent.detectionSensor.sensorSpan / 2) - 3);
-            for (DetectionSensor.Detection detection : allDetections) {
-                if (detection.azimuth >= maxAzimuth || detection.azimuth <= minAzimuth) {
-                    //out.println("danger");
-                    agent.dangerDetected = true;
-                }
-            }
+
+        ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
+        for (DetectionSensor.Detection detection : allDetections) {
+//            if(detection.defensingAgent.myTurnToMove)
+            if (agent.detectionSensor.sensorRange - detection.range < 1)
+                agent.dangerDetected = true;
         }
     }
 }

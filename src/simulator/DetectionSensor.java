@@ -2,7 +2,6 @@ package simulator;
 
 import java.util.ArrayList;
 
-import org.eclipse.swt.events.GestureEvent;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.graphics.Color;
 
@@ -11,6 +10,7 @@ import utils.Util;
 import view.Drawables;
 import view.Position;
 import view.SimDrawable;
+import java.util.Random;
 
 public class DetectionSensor implements HeadingDependent{
 
@@ -21,57 +21,83 @@ public class DetectionSensor implements HeadingDependent{
 		public double speed;
 		public double range;
 		public double azimuth;
+		public double deviationError;
 		public DefensingAgent defensingAgent;
-
+		public Detection(double deviationError){
+			this.deviationError=deviationError;
+		}
 		public double azimuthWithError() {
-			return azimuth * Util.GetRandomError(azimuthErrorPercent);
+
+			return azimuth + getRandomAzimuthError() ;
 		}
 
 		public double rangeWithError(){
-			return range * Util.GetRandomError(distanceErrorPercent);
+			return range * getRandomDistanceError();
 		}
 
+		private double GetRandomError()
+		{
+			// 10% error
+			//Random rand = new Random();
+			//int  n = rand.nextInt(20) + 90;
+			//double error = n * 0.01;
+			//return error;
+			return 1;
+		}
+		private double getRandomDistanceError(){
+			double minRange= 1- deviationError;
+			double maxRange=1+ deviationError;
+			Random rand= new Random();
+			double randValue = minRange +(maxRange-minRange)* rand.nextDouble();
+
+			return randValue;
+		}
+		//each percentage of deviation is one degree of azimuth error
+		private double getRandomAzimuthError(){
+			double minRange = -deviationError*100;
+			double maxRange = deviationError*100;
+			Random rand= new Random();
+			double randValue = minRange +(maxRange-minRange)* rand.nextDouble();
+			return randValue;
+		}
 
 	}
 
-	int azimuthErrorPercent;
-	int distanceErrorPercent;
 	double heading;	// degrees
-	double range;
+	public double sensorRange;
 	double minRange;
-	double span;		// degrees
+	public double sensorSpan;		// degrees
 	int offset;
 	double deviation;
+	double deviationError;
 
-	public DetectionSensor(int headingOffset,double range, double span,double minRange, int distanceErrorPercent, int azimuthErrorPercent) {
+	public DetectionSensor(int headingOffset,double range, double span,double minRange, double deviation) {
 		this.offset=headingOffset;
-		this.range=range;
-		this.span=span;
+		this.sensorRange =range;
+		this.sensorSpan =span;
 		this.minRange=minRange;
-		deviation=0;
-		this.distanceErrorPercent = distanceErrorPercent;
-		this.azimuthErrorPercent = azimuthErrorPercent;
+		this.deviationError=deviation;
+
 	}
 
 
 
+	public void draw(PaintEvent e, int x, int y, int r){
+		if(sensorSpan <360){
+			int x1=(int)Math.round(x+ sensorRange *r*Math.cos(Math.toRadians(heading-90- sensorSpan /2)));
+			int y1=(int)Math.round(y+ sensorRange *r*Math.sin(Math.toRadians(heading-90- sensorSpan /2)));
 
-	public void draw(PaintEvent e,int x,int y,int r){
-		if(span<360){
-			int x1=(int)Math.round(x+range*r*Math.cos(Math.toRadians(heading-90-span/2)));
-			int y1=(int)Math.round(y+range*r*Math.sin(Math.toRadians(heading-90-span/2)));
-
-			int x2=(int)Math.round(x+range*r*Math.cos(Math.toRadians(heading-90+span/2)));
-			int y2=(int)Math.round(y+range*r*Math.sin(Math.toRadians(heading-90+span/2)));
+			int x2=(int)Math.round(x+ sensorRange *r*Math.cos(Math.toRadians(heading-90+ sensorSpan /2)));
+			int y2=(int)Math.round(y+ sensorRange *r*Math.sin(Math.toRadians(heading-90+ sensorSpan /2)));
 
 			e.gc.setForeground(new Color(null, 200,0,0));
 			e.gc.drawLine(x, y, x1, y1);
 			e.gc.drawLine(x, y, x2, y2);
-			double rr=range*r;
-			e.gc.drawArc((int)Math.round(x-rr), (int)Math.round(y-rr), (int)Math.round(rr*2),(int)Math.round( rr*2), (int)Math.round(180-heading-90-span/2), (int)Math.round(span));
+			double rr= sensorRange *r;
+			e.gc.drawArc((int)Math.round(x-rr), (int)Math.round(y-rr), (int)Math.round(rr*2),(int)Math.round( rr*2), (int)Math.round(180-heading-90- sensorSpan /2), (int)Math.round(sensorSpan));
 		} else{
 			e.gc.setForeground(new Color(null, 200,0,0));
-			e.gc.drawOval((int)Math.round(x-range*r), (int)Math.round(y-range*r), (int)Math.round(range*r*2), (int)Math.round(range*r*2));
+			e.gc.drawOval((int)Math.round(x- sensorRange *r), (int)Math.round(y- sensorRange *r), (int)Math.round(sensorRange *r*2), (int)Math.round(sensorRange *r*2));
 		}
 	}
 
@@ -82,13 +108,13 @@ public class DetectionSensor implements HeadingDependent{
 		for(SimDrawable sd : Drawables.drawables){
 			Position fp=sd.getPosition();
 			double r=Math.sqrt((p.x-fp.x)*(p.x-fp.x) + (p.y-fp.y)*(p.y-fp.y));
-			if(r>minRange && r<=range){
+			if(r>minRange && r<= sensorRange){
 				double azimuth=Util.getAzimuth(p.x, p.y, fp.x,fp.y);
-				if(Util.isInSector(azimuth,heading,span)){
+				if(Util.isInSector(azimuth,heading, sensorSpan)){
 					if(sd instanceof DefensingAgent){
-						Detection g=new Detection();
+						Detection g=new Detection(this.deviationError);
 						g.position=sd.getPosition();
-						g.azimuth=azimuth+deviation;
+						g.azimuth=azimuth;
 						g.range=r;
 						DefensingAgent a=(DefensingAgent)sd;
 						g.speed=a.getSpeed();

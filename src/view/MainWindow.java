@@ -36,4 +36,5 @@ public abstract class MainWindow extends Thread{
 		display.dispose();
 		
 	}
+
 }

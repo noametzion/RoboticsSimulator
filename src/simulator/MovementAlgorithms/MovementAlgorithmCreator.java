@@ -10,6 +10,10 @@ public class MovementAlgorithmCreator {
         {
             return new ThreeForwardMovementAlgorithm();
         }
+        else if(movementAlgorithmName.equals("3forwardV2"))
+        {
+            return new ThreeForwardMovementAlgorithmV2();
+        }
         else
             throw new Exception("Wrong movement algorithm name");
     }

@@ -40,6 +40,12 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			double positionDistance =Double.parseDouble(in.readLine().split(" ")[2]);
 			int sensorSpan = Integer.parseInt(in.readLine().split(" ")[2]);
 			int sensorRange = Integer.parseInt(in.readLine().split(" ")[2]);
+			/////////////////////////////////////////////////////////////////////////////
+			///////deviation for experiemnt                    /////
+			////////////////////////////////////////////////////////////////////////////
+			Double.parseDouble(in.readLine().split(" ")[2]);
+			double sensorDeviation = deviation;
+			//double sensorDeviation = Double.parseDouble(in.readLine().split(" ")[2]);
 			ArrayList<Position> agentPositions = CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
 
 			// Create agents
@@ -47,7 +53,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			//agents=new ArrayList<DefensingAgent>(numberOfAgents);
 			for(int i=0;i<numberOfAgents;i++)
 			{
-				DetectionSensor sensor = new DetectionSensor(0, sensorRange, sensorSpan ,minRange, 10, 10);
+				DetectionSensor sensor = new DetectionSensor(0, sensorRange, sensorSpan ,minRange, 10);
 				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , sensor, 10));
 			}
 
