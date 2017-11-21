@@ -25,7 +25,8 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	private Listener simDoneListener;
 	int minRange = 0;
 
-	public PerimeterDefenseSimTask(String scenatioFileName) {
+
+	public PerimeterDefenseSimTask(String scenatioFileName, double deviation) {
 		Drawables.reset();
 		try {
 			// Create simulation
@@ -40,6 +41,12 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			double positionDistance =Double.parseDouble(in.readLine().split(" ")[2]);
 			int sensorSpan = Integer.parseInt(in.readLine().split(" ")[2]);
 			int sensorRange = Integer.parseInt(in.readLine().split(" ")[2]);
+			/////////////////////////////////////////////////////////////////////////////
+			///////deviation for experiemnt                    /////
+			////////////////////////////////////////////////////////////////////////////
+			Double.parseDouble(in.readLine().split(" ")[2]);
+			double sensorDeviation = deviation;
+			//double sensorDeviation = Double.parseDouble(in.readLine().split(" ")[2]);
 			ArrayList<Position> agentPositions = CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
 
 			// Create agents
@@ -47,7 +54,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			//agents=new ArrayList<DefensingAgent>(numberOfAgents);
 			for(int i=0;i<numberOfAgents;i++)
 
-				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , new DetectionSensor(0, sensorRange, sensorSpan ,minRange)));
+				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , new DetectionSensor(0, sensorRange, sensorSpan ,minRange,sensorDeviation)));
 
 			// Set agents configuration
 			int i=0;
@@ -124,5 +131,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 		simDoneListener=listener;
 	}
 
-
+	public Simulation getSimulation() {
+		return simulation;
+	}
 }
