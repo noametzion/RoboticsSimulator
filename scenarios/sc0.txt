@@ -8,5 +8,5 @@ agents 3
 	0,6,0,0
 	20,6,0,0
 movement alg 3forwardV2
-location alg average
+location alg AngelDistanceDeviation
 X

@@ -16,7 +16,9 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Scale;
+import simulator.DefensingAgent;
 import simulator.PerimeterDefenseSimTask;
+import simulator.Simulation;
 
 public class SimulatorWindow extends MainWindow{
 
@@ -24,7 +26,7 @@ public class SimulatorWindow extends MainWindow{
 	Timer timer;
 	TimerTask redrawTask;
 	int rate,scale;
-	int numOfSteps;
+	int distanceOfExperiment;
 	double sumDistanceFromLocation;
 	boolean simIsRunning,autoStart,grid;
 	SimDisplay sd;
@@ -47,6 +49,10 @@ public class SimulatorWindow extends MainWindow{
 				});
 		}
 	}
+
+
+
+
 	private class RedrawTaskExperiment extends TimerTask{
 		@Override
 		public void run() {
@@ -55,7 +61,7 @@ public class SimulatorWindow extends MainWindow{
 					@Override
 					public void run() {
 						if(!sd.isDisposed()){
-						  for(int i=0;i<numOfSteps;i++) {
+						  while(!passedMaximumDistance()) {
 							st.step(1);
 							sd.redraw();
 							}
@@ -64,6 +70,16 @@ public class SimulatorWindow extends MainWindow{
 					}
 				});
 		}
+	}
+	private boolean passedMaximumDistance(){
+		Simulation simulation= st.getSimulation();
+		for (DefensingAgent a: simulation.getAgents())
+			  {
+			int distance=(int)Math.sqrt(a.getPosition().x*a.getPosition().x+ a.getPosition().y*a.getPosition().y);
+			if(distance>distanceOfExperiment)
+				return true;
+		}
+		return false;
 	}
 	
 	private void startSimulation(){
@@ -106,12 +122,12 @@ public class SimulatorWindow extends MainWindow{
 		grid=true;
 	}
 
-	public SimulatorWindow(int width, int height, String title,SimulationTask st,int rate, boolean autoStart,boolean autoClose, int numOfSteps) {
+	public SimulatorWindow(int width, int height, String title,SimulationTask st,int rate, boolean autoStart,boolean autoClose, int distanceOfExperiment) {
 		super(width, height, title);
 		this.st=st;
 		scale=rate;
 		grid=false;
-		this.numOfSteps=numOfSteps;
+		this.distanceOfExperiment=distanceOfExperiment;
 		this.autoStart=autoStart;
 		if(autoClose){
 			st.addSimDoneListener(new Listener() {
@@ -198,7 +214,7 @@ public class SimulatorWindow extends MainWindow{
 		
 		if(autoStart){
 			//startSimulation();
-			startSimulationForRoboticExperiment(numOfSteps);
+			startSimulationForRoboticExperiment(distanceOfExperiment);
 
 
 			startButton.setEnabled(false);

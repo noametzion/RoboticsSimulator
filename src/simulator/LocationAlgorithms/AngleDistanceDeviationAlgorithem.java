@@ -16,15 +16,22 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
         List<PositionGrade> evaluatedPositions = GetEvaluatedDistanceAndPositionsFromAllAgents(viewDetailPairs);
 
         double sumGrade = 0;
+        double sumWeight=0;
         double sumX = 0;
         double sumY = 0;
 
         for (PositionGrade pg:evaluatedPositions) {
             sumGrade += pg.grade;
         }
+        for (PositionGrade pg:evaluatedPositions) {
+            pg.weight= sumGrade/pg.grade;
+        }
+        for (PositionGrade pg:evaluatedPositions) {
+            sumWeight += pg.weight;
+        }
         for (PositionGrade pg:evaluatedPositions){
-            sumX += pg.grade/sumGrade * pg.position.x;
-            sumY += pg.grade/sumGrade * pg.position.y;
+            sumX += pg.weight/sumWeight * pg.position.x;
+            sumY += pg.weight/sumWeight * pg.position.y;
         }
 
         Position finalEvaluatedPosition = new Position(sumX, sumY);
@@ -60,6 +67,7 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
     private class PositionGrade{
         Position position;
         double grade;
+        double weight;
         private PositionGrade(Position position, double grade){
            this.position= position;
            this.grade = grade;

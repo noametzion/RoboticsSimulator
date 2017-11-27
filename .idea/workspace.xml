@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="">
+    <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="Add generic movement algorithm">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/results/results.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out1.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out2.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out3.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out4.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out5.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out52.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out52.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results of consecutive triles/out6.txtr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/results.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/sc3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/sc4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/sc5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/sc6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/sc7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scenarios/sc_test.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boot/FPRcalculator.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/Agent.class" afterPath="$PROJECT_DIR$/bin/simulator/Agent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/DefensingAgent.class" afterPath="$PROJECT_DIR$/bin/simulator/DefensingAgent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/DetectionSensor$Detection.class" afterPath="$PROJECT_DIR$/bin/simulator/DetectionSensor$Detection.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/DetectionSensor.class" afterPath="$PROJECT_DIR$/bin/simulator/DetectionSensor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/PerimeterDefenseSimTask$1.class" afterPath="$PROJECT_DIR$/bin/simulator/PerimeterDefenseSimTask$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/simulator/PerimeterDefenseSimTask.class" afterPath="$PROJECT_DIR$/bin/simulator/PerimeterDefenseSimTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/utils/Util.class" afterPath="$PROJECT_DIR$/bin/utils/Util.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulationTask.class" afterPath="$PROJECT_DIR$/bin/view/SimulationTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$1$1.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$1.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$2.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$3.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$4.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$5.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$6.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$RedrawTask$1.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$RedrawTask$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow$RedrawTask.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow$RedrawTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/SimulatorWindow.class" afterPath="$PROJECT_DIR$/bin/view/SimulatorWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/results.txt" afterPath="$PROJECT_DIR$/scenarios/results.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc0.txt" afterPath="$PROJECT_DIR$/scenarios/sc0.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc1.txt" afterPath="$PROJECT_DIR$/scenarios/sc1.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc2.txt" afterPath="$PROJECT_DIR$/scenarios/sc2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boot/Boot.java" afterPath="$PROJECT_DIR$/src/boot/Boot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boot/RobotExperiment.java" afterPath="$PROJECT_DIR$/src/boot/RobotExperiment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithmCreator.java" afterPath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithmCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV2.java" afterPath="$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java" afterPath="$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/Simulation.java" afterPath="$PROJECT_DIR$/src/simulator/Simulation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/Util.java" afterPath="$PROJECT_DIR$/src/utils/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/SimulationTask.java" afterPath="$PROJECT_DIR$/src/view/SimulationTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/SimulatorWindow.java" afterPath="$PROJECT_DIR$/src/view/SimulatorWindow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -29,31 +74,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="sc0.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sc0.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scenarios/sc0.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+            <state relative-caret-position="51">
+              <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sc1.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scenarios/sc1.txt">
+      <file leaf-file-name="AngleDistanceDeviationAlgorithem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="374">
+              <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+              <folding>
+                <marker date="1511711638470" expanded="true" signature="5489:5495" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sc2.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scenarios/sc2.txt">
+      <file leaf-file-name="SimulatorWindow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/SimulatorWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+            <state relative-caret-position="714">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,8 +109,8 @@
       <file leaf-file-name="RobotExperiment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boot/RobotExperiment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1764">
-              <caret line="84" column="1" lean-forward="true" selection-start-line="84" selection-start-column="1" selection-end-line="84" selection-end-column="1" />
+            <state relative-caret-position="680">
+              <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,28 +118,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Boot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
+      <file leaf-file-name="sc2.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scenarios/sc2.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+            <state relative-caret-position="34">
+              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimulatorWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/SimulatorWindow.java">
+      <file leaf-file-name="Boot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="125" column="28" lean-forward="false" selection-start-line="125" selection-start-column="28" selection-end-line="125" selection-end-column="28" />
+            <state relative-caret-position="323">
+              <caret line="19" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="results.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scenarios/results.txt">
+        <entry file="file://$PROJECT_DIR$/results/results.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -101,37 +148,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Simulation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/simulator/Simulation.java">
+      <file leaf-file-name="Util.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="59" column="11" lean-forward="false" selection-start-line="53" selection-start-column="10" selection-end-line="59" selection-end-column="11" />
+            <state relative-caret-position="1428">
+              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1511108391276" expanded="true" signature="7301:7476" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreeForwardMovementAlgorithmV2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV2.java">
+      <file leaf-file-name="AverageLocationAlgorithm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1470">
-              <caret line="74" column="38" lean-forward="true" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
+            <state relative-caret-position="476">
+              <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PerimeterDefenseSimTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java">
+      <file leaf-file-name="AgentViewDetails.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/simulator/AgentViewDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="94" column="102" lean-forward="true" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="102" />
-              <folding>
-                <element signature="e#3607#3617#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="442">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,13 +201,14 @@
       <find>newSpeed</find>
       <find>typeOfAgentWhoDetectTheDanger</find>
       <find>Nan</find>
+      <find>getS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="adin1" />
       </map>
     </option>
   </component>
@@ -177,9 +222,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/simulator/Perimeter.java" />
         <option value="$PROJECT_DIR$/src/simulator/Position.java" />
-        <option value="$PROJECT_DIR$/src/view/SimulationTask.java" />
         <option value="$PROJECT_DIR$/src/simulator/Agent.java" />
-        <option value="$PROJECT_DIR$/src/simulator/DetectionSensor.java" />
         <option value="$PROJECT_DIR$/src/simulator/agentType.java" />
         <option value="$PROJECT_DIR$/src/simulator/DefensingAgent.java" />
         <option value="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithm.java" />
@@ -187,20 +230,24 @@
         <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/LocationAlgorithmCreator.java" />
         <option value="$PROJECT_DIR$/src/simulator/AgentViewDetails.java" />
         <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/ILocationAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/utils/Util.java" />
-        <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java" />
-        <option value="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithmCreator.java" />
-        <option value="$PROJECT_DIR$/src/simulator/Simulation.java" />
-        <option value="$PROJECT_DIR$/scenarios/results.txt" />
         <option value="$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV2.java" />
         <option value="$PROJECT_DIR$/src/boot/RunExperiments.java" />
-        <option value="$PROJECT_DIR$/scenarios/sc1.txt" />
-        <option value="$PROJECT_DIR$/scenarios/sc2.txt" />
+        <option value="$PROJECT_DIR$/src/simulator/DetectionSensor.java" />
+        <option value="$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java" />
+        <option value="$PROJECT_DIR$/src/view/SimulationTask.java" />
         <option value="$PROJECT_DIR$/src/view/SimulatorWindow.java" />
+        <option value="$PROJECT_DIR$/scenarios/sc2.txt" />
+        <option value="$PROJECT_DIR$/src/simulator/Simulation.java" />
+        <option value="$PROJECT_DIR$/scenarios/sc1.txt" />
+        <option value="$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithmCreator.java" />
+        <option value="$PROJECT_DIR$/scenarios/results.txt" />
+        <option value="$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV3.java" />
+        <option value="$PROJECT_DIR$/scenarios/sc0.txt" />
+        <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java" />
         <option value="$PROJECT_DIR$/src/boot/Boot.java" />
         <option value="$PROJECT_DIR$/src/boot/RobotExperiment.java" />
-        <option value="$PROJECT_DIR$/scenarios/sc0.txt" />
+        <option value="$PROJECT_DIR$/src/utils/Util.java" />
+        <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java" />
       </list>
     </option>
   </component>
@@ -227,6 +274,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,8 +335,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -300,6 +347,13 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adinepst\RobotProject\RoboticsSimulator" />
+      <recent name="C:\Users\adinepst\RobotProject\RoboticsSimulator\scenarios\results of consecutive triles" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="simulator.MovementAlgorithms" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="simulator" />
     </key>
@@ -617,28 +671,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1058" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32438478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32310644" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22341569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34675616" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3451582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -648,6 +701,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -658,8 +712,8 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -667,20 +721,20 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34734514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3461117" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853982" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32853982" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853982" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22340994" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853982" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32394367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23146667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -701,10 +755,24 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/WeightedAverage.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/simulator/Simulation.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="83" />
+      <option name="time" value="89" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -717,39 +785,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#3607#3617#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc0.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Drawables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -757,20 +792,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc3.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc5.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/sc3.txt" />
+    <entry file="file://$PROJECT_DIR$/scenarios/sc5.txt" />
     <entry file="file://$PROJECT_DIR$/src/simulator/Perimeter.java" />
     <entry file="file://$PROJECT_DIR$/src/simulator/Position.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Double.java" />
@@ -784,13 +807,6 @@
     <entry file="file://$PROJECT_DIR$/src/simulator/MissileAgent.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/Timer.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/TimerTask.java" />
-    <entry file="file://$PROJECT_DIR$/src/view/SimulationTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/simulator/FoeAgent.java" />
     <entry file="file://$PROJECT_DIR$/src/simulator/MBDtest.java" />
@@ -825,8 +841,8 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Exception.java" />
     <entry file="file://$PROJECT_DIR$/src/simulator/AgentType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -846,36 +862,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/AgentViewDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simulator/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="73" column="16" lean-forward="false" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/LocationAlgorithmCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="510">
+          <caret line="77" column="16" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -883,7 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,116 +883,171 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="48" column="58" lean-forward="false" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
-          <folding>
-            <marker date="1511030786622" expanded="true" signature="5232:5238" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/DefensingAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boot/RunExperiments.java" />
+    <entry file="file://$PROJECT_DIR$/src/simulator/DefensingAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/WeightedAverage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
+    <entry file="file://$PROJECT_DIR$/src/view/SimulationTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="54" column="41" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simulator/DetectionSensor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2058">
-          <caret line="112" column="31" lean-forward="false" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
+        <state relative-caret-position="1360">
+          <caret line="94" column="30" lean-forward="false" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithmCreator.java">
+    <entry file="file://$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="56" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="56" />
-          <folding />
+        <state relative-caret-position="1649">
+          <caret line="113" column="5" lean-forward="false" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+          <folding>
+            <element signature="e#4710#4711#0" expanded="true" />
+            <element signature="e#4734#4735#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/Simulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="59" column="11" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="59" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1511376584737" expanded="true" signature="7338:7513" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boot/FPRcalculator.java" />
     <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="78" column="78" lean-forward="true" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="78" />
+        <state relative-caret-position="562">
+          <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
           <folding>
             <marker date="1511030786653" expanded="true" signature="3436:3442" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/PerimeterDefenseSimTask.java">
+    <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="94" column="102" lean-forward="true" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="102" />
+        <state relative-caret-position="1113">
+          <caret line="57" column="43" lean-forward="false" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="e#3607#3617#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/MovementAlgorithmCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/sc1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/LocationAlgorithmCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="68" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/SimulatorWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="125" column="28" lean-forward="false" selection-start-line="125" selection-start-column="28" selection-end-line="125" selection-end-column="28" />
+        <state relative-caret-position="714">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boot/RunExperiments.java">
+    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/AngleDistanceDeviationAlgorithem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/Simulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="59" column="11" lean-forward="false" selection-start-line="53" selection-start-column="10" selection-end-line="59" selection-end-column="11" />
+        <state relative-caret-position="374">
+          <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1511108391276" expanded="true" signature="7301:7476" ph="{...}" />
+            <marker date="1511711638470" expanded="true" signature="5489:5495" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/sc0.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/sc2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/sc_test.txt" />
     <entry file="file://$PROJECT_DIR$/src/boot/RobotExperiment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1764">
-          <caret line="84" column="1" lean-forward="true" selection-start-line="84" selection-start-column="1" selection-end-line="84" selection-end-column="1" />
+        <state relative-caret-position="680">
+          <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/results.txt">
+    <entry file="file://$PROJECT_DIR$/results/results.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1011,42 +1055,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc1.txt">
+    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        <state relative-caret-position="1428">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/AverageLocationAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc2.txt">
+    <entry file="file://$PROJECT_DIR$/src/simulator/AgentViewDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/MovementAlgorithms/ThreeForwardMovementAlgorithmV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="74" column="38" lean-forward="true" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/sc0.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        <state relative-caret-position="442">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>

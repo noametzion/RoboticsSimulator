@@ -86,6 +86,7 @@ public class Util {
 
 	}
 
+
 	public static double GetRandomError(int errorPercent)
 	{
 		if (errorPercent != 0) {

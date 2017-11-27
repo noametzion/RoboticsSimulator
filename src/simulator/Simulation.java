@@ -60,7 +60,7 @@ public class Simulation {
 //        }
     }
     public double getDistanceFromActualLocation(Agent agent){
-        if(!Double.isNaN(agent.getEvaluatedPosition().x)) {
+        if(!Double.isNaN(agent.getEvaluatedPosition().x) && agent.getEvaluatedPosition().x!=0) {
             double xDistance = agent.getPosition().x - agent.getEvaluatedPosition().x;
             double yDistance = agent.getPosition().y - agent.getEvaluatedPosition().y;
 

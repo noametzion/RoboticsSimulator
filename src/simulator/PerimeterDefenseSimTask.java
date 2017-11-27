@@ -132,6 +132,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 		simDoneListener=listener;
 	}
 
+	@Override
 	public Simulation getSimulation() {
 		return simulation;
 	}
