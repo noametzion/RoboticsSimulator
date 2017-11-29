@@ -15,4 +15,5 @@ public interface ILocationAlgorithm {
     // first - other see moving
     // second - moving see other
     Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs);
+    void setCVariableInFunction(double c);
 }

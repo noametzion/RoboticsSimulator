@@ -24,13 +24,14 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	private LocationAlgorithmCreator locationAlgorithmCreator = new LocationAlgorithmCreator();
 	private Listener simDoneListener;
 	int minRange = 0;
+	double c;
 
-	public PerimeterDefenseSimTask(String scenatioFileName, int deviation, int movementDeviation) {
+	public PerimeterDefenseSimTask(String scenatioFileName, int deviation, int movementDeviation,double c) {
 		Drawables.reset();
 		try {
 			// Create simulation
 			simulation = new Simulation();
-
+			this.c=c;
 			// Read simulation scenario
 			BufferedReader in=new BufferedReader(new FileReader(scenatioFileName));
 			String line;
@@ -79,7 +80,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			line = in.readLine();
 			String locationAlgorithmName = line.split(" ")[2];
 			simulation.locationAlgorithm = locationAlgorithmCreator.Create(locationAlgorithmName);
-
+			simulation.locationAlgorithm.setCVariableInFunction(c);
 			simulation.InitSimulationSettings();
 
 			for(DefensingAgent df : simulation.getAgents())

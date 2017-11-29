@@ -10,6 +10,7 @@ import java.util.List;
 
 public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
 
+    private double c;
 
     @Override
     public Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
@@ -38,6 +39,10 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
 
         return finalEvaluatedPosition;
     }
+    @Override
+    public void setCVariableInFunction(double c) {
+        this.c=c;
+    }
 
     private List<PositionGrade> GetEvaluatedDistanceAndPositionsFromAllAgents(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs){
         List<PositionGrade> evaluatedDistanceAndPositions = new ArrayList<>();
@@ -56,7 +61,7 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
             double beta = Math.abs(calculateDifferenceDistance(viewDetailPair));
             double inverseSumDistance = 1 / sumDistance;
             double alfa = Math.abs(calculateDifferenceAngel(viewDetailPair));
-            double grade = (sumDistance * alfa) + (inverseSumDistance * beta);
+            double grade = ((sumDistance * alfa)/c) + (c*(inverseSumDistance * beta));
             PositionGrade pg = new PositionGrade(evaluatedPosition,grade);
             evaluatedDistanceAndPositions.add(pg);
         }
@@ -93,29 +98,29 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
     private double calculateSumDistance(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
         double sum = 0;
 
-        if(viewDetailPair.getKey() != null)
-        {
-            sum += viewDetailPair.getKey().distanceToOtherAgent;
-
-        }
-        if(viewDetailPair.getValue() != null)
-        {
-            sum += viewDetailPair.getValue().distanceToOtherAgent;
-
-        }
+        if(viewDetailPair.getKey() != null && viewDetailPair.getValue()==null)
+            sum = viewDetailPair.getKey().distanceToOtherAgent*2;
+        else if(viewDetailPair.getKey() == null && viewDetailPair.getValue()!=null)
+            sum = viewDetailPair.getValue().distanceToOtherAgent*2;
+        else
+            sum= viewDetailPair.getKey().distanceToOtherAgent + viewDetailPair.getValue().distanceToOtherAgent;
         return sum;
     }
     private double calculateDifferenceDistance(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
 
-        if(viewDetailPair.getKey() != null || viewDetailPair.getValue()!=null)
-            return 0;
+        if(viewDetailPair.getKey() != null && viewDetailPair.getValue()==null)
+            return viewDetailPair.getKey().deviation;
+        else if(viewDetailPair.getKey() == null && viewDetailPair.getValue()!=null)
+            return viewDetailPair.getValue().deviation;
         else
         return viewDetailPair.getKey().distanceToOtherAgent - viewDetailPair.getValue().distanceToOtherAgent;
     }
     private double calculateDifferenceAngel(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
 
-        if(viewDetailPair.getKey() != null || viewDetailPair.getValue()!=null)
-            return 0;
+        if(viewDetailPair.getKey() != null && viewDetailPair.getValue()==null)
+            return viewDetailPair.getKey().deviation;
+        else if(viewDetailPair.getKey() == null && viewDetailPair.getValue()!=null)
+            return viewDetailPair.getValue().deviation;
         else
             return viewDetailPair.getKey().azimuthToOtherAgent - Util.set0to359(viewDetailPair.getValue().azimuthToOtherAgent + 180);
     }

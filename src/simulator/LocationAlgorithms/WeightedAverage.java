@@ -32,6 +32,12 @@ public class WeightedAverage implements ILocationAlgorithm {
 
         return finalEvaluatedPosition;
     }
+
+    @Override
+    public void setCVariableInFunction(double c) {
+
+    }
+
     private List<DistancePosition> GetEvaluatedDistanceAndPositionsFromAllAgents(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs){
         List<DistancePosition> evaluatedDistanceAndPositions = new ArrayList<>();
         for (Pair<AgentViewDetails, AgentViewDetails> viewDetailPair:viewDetailPairs) {

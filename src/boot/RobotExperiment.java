@@ -23,6 +23,7 @@ public class RobotExperiment {
         int numOfDeviations=21;
         int minDeviation=0;
         int deviationInterval=1;
+        double c=1;
         String results="results\\results.txt";
         List<String> fileNames= getFilesNames();
 
@@ -60,7 +61,7 @@ public class RobotExperiment {
                         }
                     }
 
-                    SimulatorWindow sw = new SimulatorWindow(800, 500, "my simulator", new PerimeterDefenseSimTask(scenarioFile, deviationSensor, deviationMovement), 100, true, true, distanceOfExperiment);
+                    SimulatorWindow sw = new SimulatorWindow(800, 500, "my simulator", new PerimeterDefenseSimTask(scenarioFile, deviationSensor, deviationMovement,c), 100, true, true, distanceOfExperiment);
 
                     sw.isExpiramentMode = true;
                     sw.start();

@@ -10,7 +10,7 @@
 //	// test
 //	public static void main(String[] args) {
 //		//MBDtest.reset();
-//		SimulatorWindow sw=new SimulatorWindow(800, 500, "my simulator",new PerimeterDefenseSimTask("scenarios/sc0.txt",0,0));
+//		SimulatorWindow sw=new SimulatorWindow(800, 500, "my simulator",new PerimeterDefenseSimTask("scenarios/sc0.txt",0,0,1));
 //		sw.start();
 //		try {
 //			sw.join();

@@ -132,7 +132,7 @@ public class Simulation {
             for (DetectionSensor.Detection agentDetection : agentDetections) {
                 AgentViewDetails details = new AgentViewDetails(agent.getSerialNumber(),
                         agentDetection.agentSerialNumber, agent.getPosition(), agent.getHeading(),
-                        agentDetection.azimuthWithError(), agentDetection.rangeWithError() );
+                        agentDetection.azimuthWithError(), agentDetection.rangeWithError(),agentDetection.errorPercent );
                 agentsViewDetails[agent.getSerialNumber() - 1][agentDetection.agentSerialNumber - 1] = details;
             }
         }
