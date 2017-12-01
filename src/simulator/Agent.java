@@ -55,10 +55,10 @@ public class Agent implements SimDrawable {
     }
 
     public void setHeading(double heading) {
-        this.heading = heading;
+        this.heading = heading + Util.GetRandomAzimuthError(this.movementErrorPercent);
         if(headingDependents!=null)
             for(HeadingDependent hd : headingDependents){
-                hd.updateHeading(heading);
+                hd.updateHeading(this.heading);
             }
     }
 
