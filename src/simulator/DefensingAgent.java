@@ -32,7 +32,7 @@ public class DefensingAgent extends Agent {
 	public void turnAround() {
 		double oldHeading = this.heading;
 		super.setHeading(Util.set0to359(oldHeading + 180));
-		this.detectionSensor.heading = Util.set0to359(oldHeading + 180);
+		this.detectionSensor.heading = Util.set0to359(super.getHeading());
 	}
 
 	@Override

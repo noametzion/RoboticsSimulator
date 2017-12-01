@@ -94,24 +94,28 @@ public class Util {
 		return 1;
 	}
 
-	public static double GetRandomAzimuthError(int errorPercent) {
-		if (errorPercent == 0)
-		{
-			return 0;
-		}
-		double minRange = -errorPercent * 360 / 100;
-		double maxRange = errorPercent * 360 / 100;
-		Random rand = new Random();
-		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
-		return randValue;
-	}
-
-//	//each percentage of deviation is one degree of azimuth error
-//	private double getRandomAzimuthError() {
-//		double minRange = -errorPercent;
-//		double maxRange = errorPercent;
+//	public static double GetRandomAzimuthError(int errorPercent) {
+//		if (errorPercent == 0)
+//		{
+//			return 0;
+//		}
+//		double minRange = -errorPercent * 360 / 100;
+//		double maxRange = errorPercent * 360 / 100;
 //		Random rand = new Random();
 //		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
 //		return randValue;
 //	}
+
+	//each percentage of deviation is 1/5 degree of azimuth error
+	public static  double GetRandomAzimuthError(int errorPercent) {
+		if (errorPercent == 0)
+		{
+			return 0;
+		}
+		double minRange = -errorPercent;
+		double maxRange = errorPercent;
+		Random rand = new Random();
+		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
+		return randValue / 5;
+	}
 }
