@@ -106,16 +106,17 @@ public class Util {
 //		return randValue;
 //	}
 
-	//each percentage of deviation is 1/5 degree of azimuth error
-	public static  double GetRandomAzimuthError(int errorPercent) {
+	//each percentage of deviation is 1/10 degree of azimuth error
+    //each percentage of deviation is 1/10 "points" of location
+	public static  double GetRandomAdditionalError(int errorPercent) {
 		if (errorPercent == 0)
 		{
 			return 0;
 		}
-		double minRange = -errorPercent;
-		double maxRange = errorPercent;
+		double minRange = -errorPercent / 10;
+		double maxRange = errorPercent / 10;
 		Random rand = new Random();
 		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
-		return randValue / 5;
+		return randValue;
 	}
 }

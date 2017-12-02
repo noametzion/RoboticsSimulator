@@ -33,6 +33,15 @@ public class DefensingAgent extends Agent {
 		double oldHeading = this.heading;
 		super.setHeading(Util.set0to359(oldHeading + 180));
 		this.detectionSensor.heading = Util.set0to359(super.getHeading());
+		this.addLocationErrorWhenTurnAround();
+	}
+
+	private void addLocationErrorWhenTurnAround()
+	{
+		double x1=p.x+Util.GetRandomAdditionalError(movementErrorPercent);
+		double y1=p.y+Util.GetRandomAdditionalError(movementErrorPercent);
+		p.x=x1;
+		p.y=y1;
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class DetectionSensor implements HeadingDependent {
 
 		public double azimuthWithError() {
 
-			return azimuth + Util.GetRandomAzimuthError(this.errorPercent);
+			return azimuth + Util.GetRandomAdditionalError(this.errorPercent);
 		}
 
 		public double rangeWithError() {
