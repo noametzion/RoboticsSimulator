@@ -50,9 +50,9 @@ public class Simulation {
         if (movementAlgorithm.ShouldChangeMove) {
             movementAlgorithm.ChangeMove(this.agents);
         }
-
+//
 //        System.out.println("----------------------");
-//        DecimalFormat df = new DecimalFormat("#.##");
+//        DecimalFormat df = new DecimalFormat("#.####");
 //        for (Agent agent : this.agents) {
 //            System.out.println(agent.getSerialNumber());
 //            System.out.println(df.format(agent.getPosition().x) + " , " + df.format(agent.getPosition().y) + "    REAL");
@@ -60,7 +60,7 @@ public class Simulation {
 //        }
     }
     public double getDistanceFromActualLocation(Agent agent){
-        if(!Double.isNaN(agent.getEvaluatedPosition().x) && agent.getEvaluatedPosition().x!=0) {
+        if(!Double.isNaN(agent.getEvaluatedPosition().x) && agent.getEvaluatedPosition().x!=0 && !Double.isNaN(agent.getEvaluatedPosition().y) && agent.getEvaluatedPosition().y!=0) {
             double xDistance = agent.getPosition().x - agent.getEvaluatedPosition().x;
             double yDistance = agent.getPosition().y - agent.getEvaluatedPosition().y;
 
@@ -108,7 +108,7 @@ public class Simulation {
     private List<Pair<AgentViewDetails, AgentViewDetails>> getCorrectKeyValuePairsList(int agentId,List<Pair<AgentViewDetails, AgentViewDetails>> oldList){
         List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= new ArrayList<>();
         for(Pair<AgentViewDetails, AgentViewDetails> pair: oldList) {
-            if (pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) {
+            if ((pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) || pair.getKey() == null ) {
                 AgentViewDetails newKey = pair.getValue();
                 AgentViewDetails newValue = pair.getKey();
                 correctKeyValueList.add(new Pair<>(newKey, newValue));
@@ -131,8 +131,8 @@ public class Simulation {
             ArrayList<DetectionSensor.Detection> agentDetections = agent.detect();
             for (DetectionSensor.Detection agentDetection : agentDetections) {
                 AgentViewDetails details = new AgentViewDetails(agent.getSerialNumber(),
-                        agentDetection.agentSerialNumber, agent.getPosition(), agent.getHeading(),
-                        agentDetection.azimuthWithError(), agentDetection.rangeWithError(),agentDetection.errorPercent );
+                        agentDetection.agentSerialNumber, agent.getEvaluatedPosition(), agent.getHeading(),
+                        agentDetection.azimuthWithError(), agentDetection.rangeWithError(),agentDetection.errorPercent,((DefensingAgent)agent).myTurnToMove );
                 agentsViewDetails[agent.getSerialNumber() - 1][agentDetection.agentSerialNumber - 1] = details;
             }
         }
