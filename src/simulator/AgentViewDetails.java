@@ -6,7 +6,7 @@ import view.Position;
  * Created by נועם on 10/24/2017.
  */
 public class AgentViewDetails {
-    public AgentViewDetails(int agentNumberFrom, int getAgentNumberTo,Position myPosition, double myHeading, double azimuthToOtherAgent, double distanceToOtherAgent,double deviation)
+    public AgentViewDetails(int agentNumberFrom, int getAgentNumberTo,Position myPosition, double myHeading, double azimuthToOtherAgent, double distanceToOtherAgent,double deviation,boolean myTurnToMove)
     {
         this.agentNumberFrom = agentNumberFrom;
         this.getAgentNumberTo = getAgentNumberTo;
@@ -15,6 +15,7 @@ public class AgentViewDetails {
         this.azimuthToOtherAgent = azimuthToOtherAgent;
         this.distanceToOtherAgent = distanceToOtherAgent;
         this.deviation= deviation;
+        this.myTurnToMove= myTurnToMove;
     }
 
     public Position myPosition;
@@ -24,4 +25,5 @@ public class AgentViewDetails {
     public double deviation;
     public int agentNumberFrom;
     public int getAgentNumberTo;
+    public boolean myTurnToMove;
 }

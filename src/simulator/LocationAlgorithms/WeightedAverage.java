@@ -17,15 +17,22 @@ public class WeightedAverage implements ILocationAlgorithm {
         List<DistancePosition> evaluatedDistancePositions = GetEvaluatedDistanceAndPositionsFromAllAgents(viewDetailPairs);
 
         double sumDistance = 0;
+        double sumWeight = 0;
         double sumX = 0;
         double sumY = 0;
 
         for (DistancePosition dp:evaluatedDistancePositions) {
             sumDistance += dp.distance;
         }
+        for (DistancePosition dp:evaluatedDistancePositions) {
+            dp.weight= sumDistance/dp.distance;
+        }
+        for (DistancePosition dp:evaluatedDistancePositions) {
+            sumWeight += dp.weight;
+        }
         for (DistancePosition dp:evaluatedDistancePositions){
-            sumX += dp.distance/sumDistance * dp.position.x;
-            sumY += dp.distance/sumDistance * dp.position.y;
+            sumX += dp.weight/sumWeight * dp.position.x;
+            sumY += dp.weight/sumWeight * dp.position.y;
         }
 
         Position finalEvaluatedPosition = new Position(sumX, sumY);
@@ -58,6 +65,7 @@ public class WeightedAverage implements ILocationAlgorithm {
     private class DistancePosition{
         public Position position;
         public double distance;
+        public double weight;
 
         private DistancePosition(Position p, double distance){
             this.position = p;

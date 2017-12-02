@@ -22,6 +22,7 @@ public class DetectionSensor implements HeadingDependent {
 		public double range;
 		public double azimuth;
 		public int errorPercent;
+		public boolean hisTurnToMove;
 		public DefensingAgent defensingAgent;
 
 		public Detection(int errorPercent) {
@@ -99,6 +100,7 @@ public class DetectionSensor implements HeadingDependent {
 						g.heading=a.getHeading();
 						g.defensingAgent=a;
 						g.agentSerialNumber = ((DefensingAgent) sd).getSerialNumber();
+						g.hisTurnToMove=a.myTurnToMove;
 						d.add(g);
 					}
 				}
