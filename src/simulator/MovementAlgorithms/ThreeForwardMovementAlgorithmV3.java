@@ -6,7 +6,7 @@ import simulator.DetectionSensor;
 
 import java.util.ArrayList;
 
-public class ThreeForwardMovementAlgorithmV2 extends MovementAlgorithm {
+public class ThreeForwardMovementAlgorithmV3 extends MovementAlgorithm {
     @Override
     public void SetAgentsTypes(ArrayList<DefensingAgent> agents) {
         agents.get(1).myTurnToMove = true;
@@ -73,8 +73,7 @@ public class ThreeForwardMovementAlgorithmV2 extends MovementAlgorithm {
 
         ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
         for (DetectionSensor.Detection detection : allDetections) {
-//            if(detection.defensingAgent.myTurnToMove)
-            if (agent.detectionSensor.sensorRange - detection.range < 1 && detection.hisTurnToMove==true)
+          if(detection.defensingAgent.myTurnToMove)
                 agent.dangerDetected = true;
         }
     }

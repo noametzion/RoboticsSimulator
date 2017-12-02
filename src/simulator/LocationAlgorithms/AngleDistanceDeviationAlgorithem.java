@@ -47,23 +47,24 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
     private List<PositionGrade> GetEvaluatedDistanceAndPositionsFromAllAgents(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs){
         List<PositionGrade> evaluatedDistanceAndPositions = new ArrayList<>();
         for (Pair<AgentViewDetails, AgentViewDetails> viewDetailPair:viewDetailPairs) {
-            double distanceAvg = calculateAverageDistance(viewDetailPair);
-            double angelAvg = calculateAverageAngel(viewDetailPair);
-            Position evaluatedPosition;
-            if (viewDetailPair.getKey() != null) {
-                evaluatedPosition = Util.calulatePositionByAzimuthAndDistance(viewDetailPair.getKey().myPosition, angelAvg, distanceAvg);
-            }
-            else{
-                evaluatedPosition = Util.calulatePositionByAzimuthAndDistance(viewDetailPair.getValue().myPosition, angelAvg, distanceAvg);
-            }
+            if(viewDetailPair.getKey().myTurnToMove==false) {
+                double distanceAvg = calculateAverageDistance(viewDetailPair);
+                double angelAvg = calculateAverageAngel(viewDetailPair);
+                Position evaluatedPosition;
+                if (viewDetailPair.getKey() != null) {
+                    evaluatedPosition = Util.calulatePositionByAzimuthAndDistance(viewDetailPair.getKey().myPosition, angelAvg, distanceAvg);
+                } else {
+                    evaluatedPosition = Util.calulatePositionByAzimuthAndDistance(viewDetailPair.getValue().myPosition, angelAvg, distanceAvg);
+                }
 
-            double sumDistance = calculateSumDistance(viewDetailPair);
-            double beta = Math.abs(calculateDifferenceDistance(viewDetailPair));
-            double inverseSumDistance = 1 / sumDistance;
-            double alfa = Math.abs(calculateDifferenceAngel(viewDetailPair));
-            double grade = ((sumDistance * alfa)/c) + (c*(inverseSumDistance * beta));
-            PositionGrade pg = new PositionGrade(evaluatedPosition,grade);
-            evaluatedDistanceAndPositions.add(pg);
+                double sumDistance = calculateSumDistance(viewDetailPair);
+                double beta = Math.abs(calculateDifferenceDistance(viewDetailPair));
+                double inverseSumDistance = 1 / sumDistance;
+                double alfa = Math.abs(calculateDifferenceAngel(viewDetailPair));
+                double grade = ((sumDistance * alfa) / c) + (c * (inverseSumDistance * beta));
+                PositionGrade pg = new PositionGrade(evaluatedPosition, grade);
+                evaluatedDistanceAndPositions.add(pg);
+            }
         }
         return evaluatedDistanceAndPositions;
     }
@@ -109,18 +110,18 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
     private double calculateDifferenceDistance(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
 
         if(viewDetailPair.getKey() != null && viewDetailPair.getValue()==null)
-            return viewDetailPair.getKey().deviation;
+            return viewDetailPair.getKey().deviation/100*viewDetailPair.getKey().distanceToOtherAgent*2;
         else if(viewDetailPair.getKey() == null && viewDetailPair.getValue()!=null)
-            return viewDetailPair.getValue().deviation;
+            return viewDetailPair.getValue().deviation/100*viewDetailPair.getValue().distanceToOtherAgent*2;
         else
         return viewDetailPair.getKey().distanceToOtherAgent - viewDetailPair.getValue().distanceToOtherAgent;
     }
     private double calculateDifferenceAngel(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
 
         if(viewDetailPair.getKey() != null && viewDetailPair.getValue()==null)
-            return viewDetailPair.getKey().deviation;
+            return viewDetailPair.getKey().deviation*2;
         else if(viewDetailPair.getKey() == null && viewDetailPair.getValue()!=null)
-            return viewDetailPair.getValue().deviation;
+            return viewDetailPair.getValue().deviation*2;
         else
             return viewDetailPair.getKey().azimuthToOtherAgent - Util.set0to359(viewDetailPair.getValue().azimuthToOtherAgent + 180);
     }

@@ -20,14 +20,15 @@ public class RobotExperiment {
         DeviationType deviationType = DeviationType.sensorDeviation;
         int distanceOfExperiment=1000;
         int numofExperimentsPerDeviation=40;
-        int numOfDeviations=21;
-        int minDeviation=0;
+        int numOfDeviations=20;
+        int minDeviation=1;
         int deviationInterval=1;
         double c=1;
-        String results="results\\results.txt";
+        String results="results\\results.csv";
         List<String> fileNames= getFilesNames();
 
         BufferedWriter  writer = null;
+        BufferedReader reader = null;
         DecimalFormat df = new DecimalFormat("#.###");
         try {
             writer = new BufferedWriter(new FileWriter(results));
@@ -40,7 +41,22 @@ public class RobotExperiment {
         for(String file: fileNames) {
             String scenarioFile="scenarios/" + file;
             try {
-                writer.write(file + "\n\n");
+                reader= new BufferedReader(new FileReader(scenarioFile));
+                String position= reader.readLine();
+                String span= reader.readLine();
+                String distance= reader.readLine();
+                for(int i=0; i<6; i++)
+                    reader.readLine();
+                String movement= reader.readLine();
+                String localization= reader.readLine();
+                writer.write(file + "\n");
+                writer.write(position + "\n");
+                writer.write(span + "\n");
+                writer.write(distance + "\n");
+                writer.write(movement + "\n");
+                writer.write(localization+ "\n");
+                reader.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
