@@ -18,6 +18,9 @@ public class LocationAlgorithmCreator {
         else if(locationAlgorithmName.equals("angelDistanceDeviation")){
             return new AngleDistanceDeviationAlgorithem();
         }
+        else if(locationAlgorithmName.equals("intersection")){
+            return new IntersectionLocationAlgorithm();
+        }
         else
             throw new Exception("Wrong location algorithm name");
     }

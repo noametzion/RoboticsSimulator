@@ -81,6 +81,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			String locationAlgorithmName = line.split(" ")[2];
 			simulation.locationAlgorithm = locationAlgorithmCreator.Create(locationAlgorithmName);
 			simulation.locationAlgorithm.setCVariableInFunction(c);
+			simulation.locationAlgorithm.setMeasurementDeviation(deviation);
 			simulation.InitSimulationSettings();
 
 			for(DefensingAgent df : simulation.getAgents())

@@ -44,6 +44,11 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
         this.c=c;
     }
 
+    @Override
+    public void setMeasurementDeviation(double deviation) {
+
+    }
+
     private List<PositionGrade> GetEvaluatedDistanceAndPositionsFromAllAgents(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs){
         List<PositionGrade> evaluatedDistanceAndPositions = new ArrayList<>();
         for (Pair<AgentViewDetails, AgentViewDetails> viewDetailPair:viewDetailPairs) {

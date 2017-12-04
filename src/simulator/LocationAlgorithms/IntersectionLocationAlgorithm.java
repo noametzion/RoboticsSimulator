@@ -8,6 +8,8 @@ import view.Position;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
+
 /**
  * Created by נועם on 12/3/2017.
  */
@@ -19,7 +21,15 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
     public Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
 
         List<EvaluationOval> evaluatedOvals = GetEvaluatedPositionsFromAllAgents(viewDetailPairs);
-        return null;
+
+        // TODO: check well
+        java.util.Collections.sort(evaluatedOvals);
+
+        Position smallestOvalPosition = null;
+        if(!evaluatedOvals.isEmpty()) {
+            smallestOvalPosition = evaluatedOvals.get(0).center;
+        }
+        return smallestOvalPosition;
     }
 
     private List<EvaluationOval> GetEvaluatedPositionsFromAllAgents(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
@@ -138,9 +148,31 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
         this.measurementDeviation = deviation;
     }
 
-    private class EvaluationOval{
+    private class EvaluationOval implements Comparable<EvaluationOval>{
         private Position center;
         private double rangeRadius;
         private double spanRadius;
+
+        public double GetOvalArea(){
+
+            double area = rangeRadius * spanRadius * Math.PI;
+            return area;
+        }
+
+        @Override
+        public int compareTo(EvaluationOval o) {
+            double myArea = GetOvalArea();
+            double oArea = o.GetOvalArea();
+
+            if (myArea > oArea)
+            {
+                return 1;
+            }
+            else if (myArea < oArea)
+            {
+                return -1;
+            }
+            return 0;
+        }
     }
 }
