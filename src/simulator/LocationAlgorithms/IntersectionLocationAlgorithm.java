@@ -22,7 +22,6 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
 
         List<EvaluationOval> evaluatedOvals = GetEvaluatedPositionsFromAllAgents(viewDetailPairs);
 
-        // TODO: check well
         java.util.Collections.sort(evaluatedOvals);
 
         Position smallestOvalPosition = null;
