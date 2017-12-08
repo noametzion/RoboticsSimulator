@@ -46,8 +46,12 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			////////////////////////////////////////////////////////////////////////////
 			Double.parseDouble(in.readLine().split(" ")[2]);
 			double sensorDeviation = deviation;
+			// Read movement algorithm
+			line=in.readLine();
+			String movementAlgorithmName = line.split(" ")[2];
+			simulation.movementAlgorithm = movementAlgorithmCreator.Create(movementAlgorithmName);
 			//double sensorDeviation = Double.parseDouble(in.readLine().split(" ")[2]);
-			ArrayList<Position> agentPositions = CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
+			ArrayList<Position> agentPositions = simulation.movementAlgorithm.CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
 
 			// Create agents
 			int numberOfAgents=Integer.parseInt(in.readLine().split(" ")[1]);
@@ -73,11 +77,11 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			}
 
 			// Read movement algorithm
-			String movementAlgorithmName = line.split(" ")[2];
-			simulation.movementAlgorithm = movementAlgorithmCreator.Create(movementAlgorithmName);
+//			String movementAlgorithmName = line.split(" ")[2];
+//			simulation.movementAlgorithm = movementAlgorithmCreator.Create(movementAlgorithmName);
 
 			// Read movement algorithm
-			line = in.readLine();
+//			line = in.readLine();
 			String locationAlgorithmName = line.split(" ")[2];
 			simulation.locationAlgorithm = locationAlgorithmCreator.Create(locationAlgorithmName);
 			simulation.locationAlgorithm.setCVariableInFunction(c);

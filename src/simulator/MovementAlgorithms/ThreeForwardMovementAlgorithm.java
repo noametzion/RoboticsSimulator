@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import simulator.DefensingAgent;
 import simulator.AgentType;
 import simulator.DetectionSensor;
+import view.Position;
 
 /**
  * Created by נועם on 10/4/2017.
@@ -94,5 +95,16 @@ public class ThreeForwardMovementAlgorithm extends MovementAlgorithm {
                 }
             }
         }
+    }
+
+    @Override
+    public ArrayList<Position> CalculateAgentPositions(double positionDistance, int sensorRange, int sensorSpan) {
+        ArrayList<Position> agentsPositions = new ArrayList<Position>();
+        double maxDistaceBetweenTwoAgents = sensorRange * Math.cos(Math.toRadians(90 - (sensorSpan/2)));
+        double distaceBetweenTwoAgents = maxDistaceBetweenTwoAgents * positionDistance;
+        agentsPositions.add(new Position(distaceBetweenTwoAgents, 0));
+        agentsPositions.add(new Position(0, 0));
+        agentsPositions.add(new Position(-distaceBetweenTwoAgents, 0));
+        return agentsPositions;
     }
 }

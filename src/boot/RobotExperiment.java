@@ -45,9 +45,10 @@ public class RobotExperiment {
                 String position= reader.readLine();
                 String span= reader.readLine();
                 String distance= reader.readLine();
-                for(int i=0; i<6; i++)
-                    reader.readLine();
+                reader.readLine();
                 String movement= reader.readLine();
+                for(int i=0; i<5; i++)
+                    reader.readLine();
                 String localization= reader.readLine();
                 writer.write(file + "\n");
                 writer.write(position + "\n");
