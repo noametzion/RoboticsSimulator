@@ -51,11 +51,12 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			String movementAlgorithmName = line.split(" ")[2];
 			simulation.movementAlgorithm = movementAlgorithmCreator.Create(movementAlgorithmName);
 			//double sensorDeviation = Double.parseDouble(in.readLine().split(" ")[2]);
-			ArrayList<Position> agentPositions = simulation.movementAlgorithm.CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
+
 
 			// Create agents
 			int numberOfAgents=Integer.parseInt(in.readLine().split(" ")[1]);
-			//agents=new ArrayList<DefensingAgent>(numberOfAgents);
+			simulation.movementAlgorithm.setNumOfAgents(numberOfAgents);
+			ArrayList<Position> agentPositions = simulation.movementAlgorithm.CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
 			for(int i=0;i<numberOfAgents;i++)
 			{
 				DetectionSensor sensor = new DetectionSensor(0, sensorRange, sensorSpan ,minRange, deviation);
@@ -97,15 +98,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 		}
 	}
 
-	private ArrayList<Position> CalculateAgentPositions(double positionDistance, int sensorRange, int sensorSpan) {
-		ArrayList<Position> agentsPositions = new ArrayList<Position>();
-		double maxDistaceBetweenTwoAgents = sensorRange * Math.cos(Math.toRadians(90 - (sensorSpan/2)));
-		double distaceBetweenTwoAgents = maxDistaceBetweenTwoAgents * positionDistance;
-		agentsPositions.add(new Position(distaceBetweenTwoAgents, 0));
-		agentsPositions.add(new Position(0, 0));
-		agentsPositions.add(new Position(-distaceBetweenTwoAgents, 0));
-		return agentsPositions;
-	}
+
 
 
 	@Override

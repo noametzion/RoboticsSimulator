@@ -15,6 +15,10 @@ public class ThreeForwardMovementAlgorithmV3 extends MovementAlgorithm {
         agents.get(1).myType = AgentType.leading;
         agents.get(2).myType = AgentType.guarding;
     }
+    @Override
+    public void setNumOfAgents(int num){
+
+    }
 
     @Override
     public void MakeStep(ArrayList<DefensingAgent> agents, double newSpeed) {

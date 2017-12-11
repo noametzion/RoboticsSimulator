@@ -15,6 +15,10 @@ public class ThreeForwardMovementAlgorithmV2 extends MovementAlgorithm {
         agents.get(1).myType = AgentType.leading;
         agents.get(2).myType = AgentType.guarding;
     }
+    @Override
+    public void setNumOfAgents(int num){
+
+    }
 
     @Override
     public void MakeStep(ArrayList<DefensingAgent> agents, double newSpeed) {
@@ -74,7 +78,6 @@ public class ThreeForwardMovementAlgorithmV2 extends MovementAlgorithm {
 
         ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
         for (DetectionSensor.Detection detection : allDetections) {
-//            if(detection.defensingAgent.myTurnToMove)
             if (agent.detectionSensor.sensorRange - detection.range < 1 && detection.hisTurnToMove==true)
                 agent.dangerDetected = true;
         }

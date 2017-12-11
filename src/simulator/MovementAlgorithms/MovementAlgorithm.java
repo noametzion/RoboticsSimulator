@@ -21,4 +21,6 @@ public abstract class MovementAlgorithm {
 
     protected abstract void CheckDanger(DefensingAgent agent);
     public abstract ArrayList<Position> CalculateAgentPositions(double positionDistance, int sensorRange, int sensorSpan);
+    public abstract void setNumOfAgents(int num);
+
 }
