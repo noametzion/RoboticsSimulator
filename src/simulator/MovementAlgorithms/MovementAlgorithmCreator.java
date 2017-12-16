@@ -18,6 +18,10 @@ public class MovementAlgorithmCreator {
         {
             return new ThreeForwardMovementAlgorithmV3();
         }
+        else if(movementAlgorithmName.equals("NagentsMove"))
+        {
+            return new NAgentsMovementAlgorithem();
+        }
         else
             throw new Exception("Wrong movement algorithm name");
     }
