@@ -2,6 +2,7 @@ package simulator.LocationAlgorithms;
 
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import utils.Util;
 import view.Position;
 
@@ -13,7 +14,7 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
     private double c;
 
     @Override
-    public Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
+    public EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
         List<PositionGrade> evaluatedPositions = GetEvaluatedDistanceAndPositionsFromAllAgents(viewDetailPairs);
 
         double sumGrade = 0;
@@ -35,9 +36,10 @@ public class AngleDistanceDeviationAlgorithem implements ILocationAlgorithm {
             sumY += pg.weight/sumWeight * pg.position.y;
         }
 
-        Position finalEvaluatedPosition = new Position(sumX, sumY);
+        EvaluatedLocationResult evaluatedLocationResult = new EvaluatedLocationResult();
+        evaluatedLocationResult.position = new Position(sumX, sumY);
 
-        return finalEvaluatedPosition;
+        return evaluatedLocationResult;
     }
     @Override
     public void setCVariableInFunction(double c) {

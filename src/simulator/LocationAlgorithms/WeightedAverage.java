@@ -2,6 +2,7 @@ package simulator.LocationAlgorithms;
 
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import utils.Util;
 import view.Position;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class WeightedAverage implements ILocationAlgorithm {
 
     @Override
-    public Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
+    public EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
 
         List<DistancePosition> evaluatedDistancePositions = GetEvaluatedDistanceAndPositionsFromAllAgents(viewDetailPairs);
 
@@ -35,9 +36,11 @@ public class WeightedAverage implements ILocationAlgorithm {
             sumY += dp.weight/sumWeight * dp.position.y;
         }
 
-        Position finalEvaluatedPosition = new Position(sumX, sumY);
+        EvaluatedLocationResult evaluatedLocationResult = new EvaluatedLocationResult();
 
-        return finalEvaluatedPosition;
+        evaluatedLocationResult.position = new Position(sumX, sumY);
+
+        return evaluatedLocationResult;
     }
 
     @Override

@@ -51,7 +51,7 @@ public class SimDisplay extends Canvas{
 				for(SimDrawable d : drawables){
 					double cx=d.getPosition().x;
 					double cy=d.getPosition().y;
-					d.draw(e, (int)Math.round(x0+cx*zoom), (int)Math.round(y0+cy*zoom), zoom);
+					d.draw(e, (int)Math.round(x0+cx*zoom), (int)Math.round(y0+cy*zoom), zoom, x0, y0);
 				}
 		}
 		

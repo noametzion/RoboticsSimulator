@@ -1,9 +1,9 @@
 package simulator;
+import simulator.LocationAlgorithms.EvaluatedLocationResult;
 import simulator.LocationAlgorithms.ILocationAlgorithm;
 import simulator.MovementAlgorithms.MovementAlgorithm;
 import view.Position;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,14 +37,14 @@ public class Simulation {
     public void Step(double newSpeed) {
 
         movementAlgorithm.MakeStep(this.getAgents(), newSpeed);
-        HashMap<Integer, Position> evaluatedPositions = this.getEvaluatedPositions();
-
+        HashMap<Integer, EvaluatedLocationResult> evaluatedPositions = this.getEvaluatedPositions();
 
         for (Agent agent : this.agents) {
             //if (!Double.isNaN(positionsEvaluations.get(agent.serialNumber).x) &&
             // !Double.isNaN(positionsEvaluations.get(agent.serialNumber).y)) {
             if (((DefensingAgent) agent).myTurnToMove == true) {
-                agent.setEvaluatedPosition(evaluatedPositions.get(agent.serialNumber));
+                agent.setEvaluatedPosition(evaluatedPositions.get(agent.serialNumber).position);
+                agent.setEvaluationShapes(evaluatedPositions.get(agent.serialNumber).evaluationShapes);
             }
         }
         if (movementAlgorithm.ShouldChangeMove) {
@@ -59,6 +59,7 @@ public class Simulation {
 //            System.out.println(df.format(agent.getEvaluatedPosition().x) + " , " + df.format(agent.getEvaluatedPosition().y) + "    EVALUATION");
 //        }
     }
+
     public double getDistanceFromActualLocation(Agent agent){
         if(!Double.isNaN(agent.getEvaluatedPosition().x) && agent.getEvaluatedPosition().x!=0 && !Double.isNaN(agent.getEvaluatedPosition().y) && agent.getEvaluatedPosition().y!=0) {
             double xDistance = agent.getPosition().x - agent.getEvaluatedPosition().x;
@@ -88,19 +89,19 @@ public class Simulation {
 
 
 
-    public HashMap<Integer, Position> getEvaluatedPositions(){
+    public HashMap<Integer, EvaluatedLocationResult> getEvaluatedPositions(){
         // Get all agents view details
         List<Pair<AgentViewDetails, AgentViewDetails>> detections = this.getDetections();
 
         // TODO: use map
         List<Pair<Integer,List<Pair<AgentViewDetails,AgentViewDetails>>>>  detectionsBySerialNumber = this.SplitDetectionsByAgents(detections);
 
-        HashMap<Integer,Position> positionsEvaluations = new HashMap<>();
+        HashMap<Integer,EvaluatedLocationResult> positionsEvaluations = new HashMap<>();
         for (Pair<Integer, List<Pair<AgentViewDetails, AgentViewDetails>>> currentAgentDetections : detectionsBySerialNumber)
         {
             List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= getCorrectKeyValuePairsList(currentAgentDetections.getKey().intValue(),currentAgentDetections.getValue());
-            Position evaluatedPos = locationAlgorithm.CalculateEvaluatedPosition(correctKeyValueList);
-            positionsEvaluations.put(currentAgentDetections.getKey() ,evaluatedPos);
+            EvaluatedLocationResult evaluatedLocationResult = locationAlgorithm.CalculateEvaluatedPosition(correctKeyValueList);
+            positionsEvaluations.put(currentAgentDetections.getKey() ,evaluatedLocationResult);
         }
 
         return positionsEvaluations;

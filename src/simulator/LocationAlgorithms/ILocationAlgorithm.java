@@ -4,6 +4,7 @@ import javafx.util.Pair;
 import simulator.Agent;
 import simulator.AgentViewDetails;
 import simulator.DefensingAgent;
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import view.Position;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface ILocationAlgorithm {
     // first - other see moving
     // second - moving see other
-    Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs);
+    EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs);
     void setCVariableInFunction(double c);
     void setMeasurementDeviation(double deviation);
 }

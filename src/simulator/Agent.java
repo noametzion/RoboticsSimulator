@@ -1,10 +1,12 @@
 package simulator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.graphics.Color;
 
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import utils.Util;
 import view.Position;
 import view.SimDrawable;
@@ -17,7 +19,13 @@ public class Agent implements SimDrawable {
 
     Position p;
     Position evaluatedPosition;
+
+    public void setEvaluationShapes(List<EvaluationShape> evaluationShapes) {
+        this.evaluationShapes = evaluationShapes;
+    }
+
     //double evaluatedHeading;
+    private List<EvaluationShape> evaluationShapes;
     double heading;	// degrees
     double speed;
     int serialNumber;
@@ -83,12 +91,19 @@ public class Agent implements SimDrawable {
     }
 
     @Override
-    public void draw(PaintEvent e, int x, int y, int r) {
+    public void draw(PaintEvent e, int x, int y, int r, int x0, int y0) {
         e.gc.setForeground(new Color(null, 0, 0, 255));
         e.gc.drawOval(x-r/2, y-r/2, r, r);
         int x1=(int)Math.round(x+(r/3) * Math.cos(Math.toRadians(heading-90)));
         int y1=(int)Math.round(y+(r/3) * Math.sin(Math.toRadians(heading-90)));
         e.gc.drawLine(x, y, x1, y1);
+
+        if (evaluationShapes != null)
+        {
+            for (EvaluationShape shape: evaluationShapes) {
+                shape.draw(e, x, y, r, x0, y0);
+            }
+        }
     }
 
     public void setSerialNumber(int serialNumber) {

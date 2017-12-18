@@ -2,6 +2,7 @@ package simulator.LocationAlgorithms;
 
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import utils.Util;
 import view.Position;
 
@@ -12,8 +13,9 @@ import java.util.List;
  * Created by נועם on 10/24/2017.
  */
 public class AverageLocationAlgorithm implements ILocationAlgorithm {
+
     @Override
-    public Position CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
+    public EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
 
         List<Position> evaluatedPositions = GetEvaluatedPositionsFromAllAgents(viewDetailPairs);
 
@@ -25,9 +27,10 @@ public class AverageLocationAlgorithm implements ILocationAlgorithm {
             sumY += pos.y;
         }
 
-        Position finalEvaluatedPosition = new Position(sumX / evaluatedPositions.size(), sumY / evaluatedPositions.size());
+        EvaluatedLocationResult evaluatedLocationResult = new EvaluatedLocationResult();
+        evaluatedLocationResult.position  = new Position(sumX / evaluatedPositions.size(), sumY / evaluatedPositions.size());
 
-        return finalEvaluatedPosition;
+        return evaluatedLocationResult;
     }
     @Override
     public void setCVariableInFunction(double c) {

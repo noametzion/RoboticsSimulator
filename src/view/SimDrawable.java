@@ -7,6 +7,6 @@ public interface  SimDrawable {
 	
 	Position getPosition();
 	
-	void draw(PaintEvent e, int x, int y, int zoom);
+	void draw(PaintEvent e, int x, int y, int zoom, int x0, int y0);
 	
 }

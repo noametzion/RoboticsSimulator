@@ -45,8 +45,8 @@ public class DefensingAgent extends Agent {
 	}
 
 	@Override
-	public void draw(PaintEvent e, int x, int y, int r) {
-		super.draw(e, x, y, r);
+	public void draw(PaintEvent e, int x, int y, int r, int x0, int y0) {
+		super.draw(e, x, y, r, x0, y0);
 		detectionSensor.draw(e, x, y, r);
 	}
 
