@@ -21,12 +21,13 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
 
         //java.util.Collections.sort(evaluatedArchers);
 
-        // TODO: fix
+        // TODO: fix -- take the center of the intersection instead of the first shape's center
         Position smallestOvalPosition = null;
         if(!evaluatedArchers.isEmpty()) {
             smallestOvalPosition = evaluatedArchers.get(0).center;
         }
 
+        // Create Evaluated Location Result
         EvaluatedLocationResult evaluatedLocationResult = new EvaluatedLocationResult();
         evaluatedLocationResult.position = smallestOvalPosition;
 
@@ -42,11 +43,14 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
         List<EvaluationArcher> evaluatedOvals = new ArrayList<EvaluationArcher>();
         for (Pair<AgentViewDetails, AgentViewDetails> pair :viewDetailPairs) {
 
+            // Calculate errors
+            double rangeError = this.calculateRangeError(pair);
+            double spanError = this.calculateSpanErrorInDegrees(pair);
 
             EvaluationArcher evaluatedOval;
             // TODO: fix - calculate when other see me...
             if (pair.getKey() != null) {
-                evaluatedOval = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent);
+                evaluatedOval = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent, rangeError, spanError);
                 //evaluatedOval.center = Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent);
                 //evaluatedOval.topPoint = Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent + evaluatedOval.rangeError);
                 //evaluatedOval.bottomPoint =Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent - evaluatedOval.rangeError);
@@ -55,13 +59,9 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
             }
             else{
                 double correctAzimuth = Util.set0to359(pair.getValue().azimuthToOtherAgent + 180);
-                evaluatedOval = new EvaluationArcher(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent);
+                evaluatedOval = new EvaluationArcher(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent, rangeError, spanError);
                 //evaluatedOval.center = Util.calulatePositionByAzimuthAndDistance(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent);
             }
-
-            // Calculate errors
-            evaluatedOval.rangeError = this.calculateRangeError(pair);
-            evaluatedOval.spanError = this.calculateSpanErrorInDegrees(pair);
 
             evaluatedOvals.add(evaluatedOval);
         }
