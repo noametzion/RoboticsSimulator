@@ -1,5 +1,5 @@
 Robots Position 0.5
-sensor span 180
+sensor span 40
 sensor distance 20
 sensor divationdetectors 0.1
 movement alg: NagentsMove

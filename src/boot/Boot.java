@@ -2,7 +2,12 @@ package boot;
 
 //import simulator.MBDtest;
 import simulator.PerimeterDefenseSimTask;
+import utils.ConvexPolygon2D;
+import utils.PolygonIntersection;
+import view.Position;
 import view.SimulatorWindow;
+
+import java.util.ArrayList;
 
 public class Boot {
 
@@ -23,6 +28,6 @@ public class Boot {
 		//MBDtest.printDiagnoses(0.0);
 
 
-	}
 
+    }
 }
