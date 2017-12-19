@@ -3,6 +3,8 @@ package utils;
 import simulator.DetectionSensor.Detection;
 import view.Position;
 
+
+import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 public class Util {
@@ -86,10 +88,12 @@ public class Util {
 
 	public static double GetRandomError(int errorPercent) {
 		if (errorPercent != 0) {
+			double percent= (double)errorPercent/100.0;
+			double minRange = 1.00 - percent;
+			double maxRange = 1.00 + percent;
 			Random rand = new Random();
-			int n = rand.nextInt(errorPercent * 2) + (100 - errorPercent);
-			double error = n * 0.01;
-			return error;
+			double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
+			return randValue;
 		}
 		return 1;
 	}
@@ -123,4 +127,6 @@ public class Util {
 	public static double ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(double errorPercent){
 		return errorPercent / 10;
 	}
+
+
 }
