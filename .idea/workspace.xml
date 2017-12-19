@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc3_1.txt" afterPath="$PROJECT_DIR$/results/sc3_1.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc3_2.txt" afterPath="$PROJECT_DIR$/results/sc3_2.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc3_3.txt" afterPath="$PROJECT_DIR$/results/sc3_3.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc4_1.txt" afterPath="$PROJECT_DIR$/results/sc4_1.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc4_2.txt" afterPath="$PROJECT_DIR$/results/sc4_2.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc4_3.txt" afterPath="$PROJECT_DIR$/results/sc4_3.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc5_1.txt" afterPath="$PROJECT_DIR$/results/sc5_1.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc5_2.txt" afterPath="$PROJECT_DIR$/results/sc5_2.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc5_3.txt" afterPath="$PROJECT_DIR$/results/sc5_3.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc6_1.txt" afterPath="$PROJECT_DIR$/results/sc6_1.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc6_2.txt" afterPath="$PROJECT_DIR$/results/sc6_2.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc6_3.txt" afterPath="$PROJECT_DIR$/results/sc6_3.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc7_1.txt" afterPath="$PROJECT_DIR$/results/sc7_1.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc7_2.txt" afterPath="$PROJECT_DIR$/results/sc7_2.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc7_3.txt" afterPath="$PROJECT_DIR$/results/sc7_3.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc8_1.txt" afterPath="$PROJECT_DIR$/results/sc8_1.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc8_2.txt" afterPath="$PROJECT_DIR$/results/sc8_2.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc8_3.txt" afterPath="$PROJECT_DIR$/results/sc8_3.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/scenarios/sc9_1.txt" afterPath="$PROJECT_DIR$/results/sc9_1.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc1_1.txt" afterPath="$PROJECT_DIR$/scenarios/sc1_1.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc1_2.txt" afterPath="$PROJECT_DIR$/scenarios/sc1_2.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc1_3.txt" afterPath="$PROJECT_DIR$/scenarios/sc1_3.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc2_1.txt" afterPath="$PROJECT_DIR$/scenarios/sc2_1.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc2_2.txt" afterPath="$PROJECT_DIR$/scenarios/sc2_2.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/sc2_3.txt" afterPath="$PROJECT_DIR$/scenarios/sc2_3.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boot/Boot.java" afterPath="$PROJECT_DIR$/src/boot/Boot.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,8 +99,8 @@
       <file leaf-file-name="Boot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="312">
+              <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -705,7 +679,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513026657441</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="adding polygon intersection calculation">
+      <created>1513666736110</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1513666736110</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -805,7 +786,8 @@
     <MESSAGE value="setting up for experiment + fixxing small thing in algorithims" />
     <MESSAGE value="changing random error to double" />
     <MESSAGE value="adding movement algorithm of n robots" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding movement algorithm of n robots" />
+    <MESSAGE value="adding polygon intersection calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding polygon intersection calculation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1116,6 +1098,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1215,8 +1198,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/boot/Boot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="312">
+          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
