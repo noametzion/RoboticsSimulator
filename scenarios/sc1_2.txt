@@ -1,12 +1,19 @@
 Robots Position 0.5
-sensor span 50
-sensor distance 10
+sensor span 80
+sensor distance 20
 sensor divationdetectors 0.1
-agents 3
+movement alg: NagentsMove
+agents 10
 	detection_deviation rotation_speed	rotation_error detection_deviation
 	10,6,10,10
 	0,6,0,0
 	20,6,0,0
-movement alg: 3forward
-location alg weightedAverage
+	20,6,0,0
+	20,6,0,0
+	20,6,0,0
+	20,6,0,0
+	20,6,0,0
+	20,6,0,0
+	20,6,0,0
+location alg average
 X
