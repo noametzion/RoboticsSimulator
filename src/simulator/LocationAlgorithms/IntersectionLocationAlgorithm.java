@@ -44,18 +44,18 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
         for (Pair<AgentViewDetails, AgentViewDetails> pair :viewDetailPairs) {
 
             // Calculate errors
-            double rangeError = this.calculateRangeError(pair);
+            double rangeError = 0;
+            try {
+                rangeError = this.calculateRangeError(pair);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             double spanError = this.calculateSpanErrorInDegrees(pair);
 
             EvaluationArcher evaluatedOval;
             // TODO: fix - calculate when other see me...
             if (pair.getKey() != null) {
                 evaluatedOval = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent, rangeError, spanError);
-                //evaluatedOval.center = Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent);
-                //evaluatedOval.topPoint = Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent + evaluatedOval.rangeError);
-                //evaluatedOval.bottomPoint =Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent - evaluatedOval.rangeError);
-                //evaluatedOval.rightPoint = Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, Util.set0to359(pair.getKey().azimuthToOtherAgent + evaluatedOval.spanError), pair.getKey().distanceToOtherAgent);
-                //evaluatedOval.leftPoint = Util.calulatePositionByAzimuthAndDistance(pair.getKey().myPosition, Util.set0to359(pair.getKey().azimuthToOtherAgent - evaluatedOval.spanError), pair.getKey().distanceToOtherAgent);
             }
             else{
                 double correctAzimuth = Util.set0to359(pair.getValue().azimuthToOtherAgent + 180);
@@ -69,13 +69,24 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
         return evaluatedOvals;
     }
 
-    private double calculateRangeError(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){
+    private double calculateRangeError(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair) throws Exception{
+
+        double error;
         if(viewDetailPair.getKey() != null && viewDetailPair.getValue() != null)
         {
-            double error = Math.abs(viewDetailPair.getKey().distanceToOtherAgent - viewDetailPair.getValue().distanceToOtherAgent);
-            return error;
+            error = Math.abs(viewDetailPair.getKey().distanceToOtherAgent - viewDetailPair.getValue().distanceToOtherAgent);
         }
-        return measurementDeviation;
+        else if (viewDetailPair.getKey() != null)
+        {
+            error = measurementDeviation * viewDetailPair.getKey().distanceToOtherAgent / 100;
+        }
+        else if (viewDetailPair.getValue() != null){
+            error = measurementDeviation * viewDetailPair.getValue().distanceToOtherAgent / 100;
+        }
+        else {
+            throw new Exception("Robots Not See Each Other");
+        }
+        return error;
     }
 
     private double calculateSpanErrorInDegrees(Pair<AgentViewDetails, AgentViewDetails> viewDetailPair){

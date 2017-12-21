@@ -125,7 +125,7 @@ public class Util {
 	//each percentage of deviation is 1/10 degree of azimuth error
 	//each percentage of deviation is 1/10 "points" of location
 	public static double ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(double errorPercent){
-		return errorPercent / 10;
+		return errorPercent / 5;
 	}
 
 

@@ -16,7 +16,7 @@ public class Boot {
 	public static void main(String[] args) {
 		//MBDtest.reset();
 		SimulatorWindow sw=new SimulatorWindow(800, 500, "my simulator",
-              new PerimeterDefenseSimTask("scenarios/sc9_1.txt",10,0,1));
+              new PerimeterDefenseSimTask("scenarios/sc9_1.txt",5,0,1));
 		sw.start();
 		try {
 			sw.join();
