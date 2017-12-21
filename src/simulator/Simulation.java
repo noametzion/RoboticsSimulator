@@ -157,15 +157,14 @@ public class Simulation {
         {
             List<Pair<AgentViewDetails,AgentViewDetails>> currentAgentViewsList = new ArrayList<>();
             for (Pair<AgentViewDetails, AgentViewDetails> viewDetailsPair:detections) {
-                if(viewDetailsPair.getKey() != null && viewDetailsPair.getKey().getAgentNumberTo == i)
+                //TODO: Check the case of agent number from
+                if(viewDetailsPair.getKey() != null && (viewDetailsPair.getKey().getAgentNumberTo == i || viewDetailsPair.getKey().agentNumberFrom == i))
                 {
                     currentAgentViewsList.add(viewDetailsPair);
-                    //break;
                 }
-                if(viewDetailsPair.getValue() != null && viewDetailsPair.getValue().getAgentNumberTo == i)
+                else if(viewDetailsPair.getValue() != null && (viewDetailsPair.getValue().getAgentNumberTo == i || viewDetailsPair.getValue().agentNumberFrom == i))
                 {
                     currentAgentViewsList.add(viewDetailsPair);
-                    //break;
                 }
             }
             detectionsBySerialNumber.add(new Pair<>(i, currentAgentViewsList));

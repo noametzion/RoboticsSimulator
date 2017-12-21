@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Created by נועם on 12/14/2017.
  */
 public abstract class EvaluationShape implements SimDrawable {
+
     @Override
     public Position getPosition() {
         return null;

@@ -52,18 +52,17 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
             }
             double spanError = this.calculateSpanErrorInDegrees(pair);
 
-            EvaluationArcher evaluatedOval;
-            // TODO: fix - calculate when other see me...
+            EvaluationArcher evaluatedArcher;
+
             if (pair.getKey() != null) {
-                evaluatedOval = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent, rangeError, spanError);
+                evaluatedArcher = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent, rangeError, spanError);
             }
             else{
                 double correctAzimuth = Util.set0to359(pair.getValue().azimuthToOtherAgent + 180);
-                evaluatedOval = new EvaluationArcher(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent, rangeError, spanError);
-                //evaluatedOval.center = Util.calulatePositionByAzimuthAndDistance(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent);
+                evaluatedArcher = new EvaluationArcher(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent, rangeError, spanError);
             }
 
-            evaluatedOvals.add(evaluatedOval);
+            evaluatedOvals.add(evaluatedArcher);
         }
 
         return evaluatedOvals;

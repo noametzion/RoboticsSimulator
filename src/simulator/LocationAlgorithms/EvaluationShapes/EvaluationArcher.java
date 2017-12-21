@@ -31,7 +31,8 @@ public class EvaluationArcher extends EvaluationShape {
     public Position topLeftPoint;
 
     // TODO: implement with is opposite default param = false;
-    public EvaluationArcher(Position featurePosition, double featureAzimuthToCenter, double featureRangeToCenter, double rangeError, double spanError) {
+    public EvaluationArcher(Position featurePosition, double featureAzimuthToCenter, double featureRangeToCenter, double rangeError, double spanError){
+
         this.featurePosition = featurePosition;
         this.featureAzimuthToCenter = featureAzimuthToCenter;
         this.featureRangeToCenter = featureRangeToCenter;
