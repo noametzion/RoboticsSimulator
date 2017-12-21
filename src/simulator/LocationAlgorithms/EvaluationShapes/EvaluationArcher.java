@@ -6,6 +6,8 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.events.PaintEvent;
 import view.SimDrawable;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by נועם on 12/14/2017.
@@ -104,29 +106,19 @@ public class EvaluationArcher extends EvaluationShape {
         e.gc.drawLine(blpx, blpy, lpx, lpy);
         e.gc.drawLine(lpx, lpy, tlpx, tlpy);
         e.gc.drawLine(tlpx, tlpy, tpx, tpy);
+    }
 
-        // TODO: implement
-//        int x1=(int)Math.round(x+ sensorRange *r*Math.cos(Math.toRadians(heading-90- sensorSpan /2)));
-//        int y1=(int)Math.round(y+ sensorRange *r*Math.sin(Math.toRadians(heading-90- sensorSpan /2)));
-//
-//        int x2=(int)Math.round(x+ sensorRange *r*Math.cos(Math.toRadians(heading-90+ sensorSpan /2)));
-//        int y2=(int)Math.round(y+ sensorRange *r*Math.sin(Math.toRadians(heading-90+ sensorSpan /2)));
-//
-//        e.gc.setForeground(new Color(null, 200,0,0));
-//        e.gc.drawLine(x, y, x1, y1);
-//        e.gc.drawLine(x, y, x2, y2);
-//        double rr= sensorRange *r;
-//        e.gc.drawArc((int)Math.round(x-rr), (int)Math.round(y-rr), (int)Math.round(rr*2),(int)Math.round( rr*2), (int)Math.round(180-heading-90- sensorSpan /2), (int)Math.round(sensorSpan));
-
-        //int centerX=(int)Math.round(center.x);
-        //int centerY=(int)Math.round(center.y);
-
-
-
-
-
-
-       // e.gc.setForeground(new Color(null, 0, 255, 0));
-       // e.gc.drawPoint(xOfFeature, yOfFeature);
+    @Override
+    public ArrayList<Position> GetEvaluationShapePositionsByOrder() {
+        ArrayList<Position> shape = new ArrayList<>();
+        shape.add(topPoint);
+        shape.add(topRightPoint);
+        shape.add(rightPoint);
+        shape.add(bottomRightPoint);
+        shape.add(bottomPoint);
+        shape.add(bottomLeftPoint);
+        shape.add(leftPoint);
+        shape.add(topLeftPoint);
+        return  shape;
     }
 }
