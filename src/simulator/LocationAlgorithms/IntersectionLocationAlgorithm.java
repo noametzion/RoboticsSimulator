@@ -4,6 +4,8 @@ import simulator.LocationAlgorithms.EvaluationShapes.EvaluationArcher;
 import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
+import utils.ConvexPolygon2D;
+import utils.PolygonIntersection;
 import utils.Util;
 import view.Position;
 
@@ -18,15 +20,28 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
     public EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
 
         List<EvaluationArcher> evaluatedArchers = GetEvaluatedPositionsFromAllAgents(viewDetailPairs);
-
-        //java.util.Collections.sort(evaluatedArchers);
-
-        // TODO: fix -- take the center of the intersection instead of the first shape's center
-        Position smallestOvalPosition = null;
-        if(!evaluatedArchers.isEmpty()) {
-            smallestOvalPosition = evaluatedArchers.get(0).center;
+        List<ConvexPolygon2D> polygon2DS =new ArrayList<>();
+        for(EvaluationArcher ea:evaluatedArchers){
+            polygon2DS.add(new ConvexPolygon2D(ea.GetEvaluationShapePositionsByOrder()));
         }
+        Position smallestOvalPosition = null;
+        PolygonIntersection polygonIntersection= new PolygonIntersection();
+        ConvexPolygon2D intersection=null;
+        if(polygon2DS.size()==1)
+            smallestOvalPosition= polygonIntersection.getCenterPositionOfPolygon(polygon2DS.get(0));
+        else if(polygon2DS.size()>1){
+            intersection= polygonIntersection.getIntersectionOfPolygons(polygon2DS.get(0),polygon2DS.get(1));
+            for(int i=2;i<polygon2DS.size();i++){
+                intersection=polygonIntersection.getIntersectionOfPolygons(intersection,polygon2DS.get(i));
 
+            }
+            if(intersection.corners.size()!=0){
+                smallestOvalPosition= polygonIntersection.getCenterPositionOfPolygon(intersection);
+
+            }
+            else
+                smallestOvalPosition= polygonIntersection.getCenterPositionOfPolygon(polygon2DS.get(0));
+        }
         // Create Evaluated Location Result
         EvaluatedLocationResult evaluatedLocationResult = new EvaluatedLocationResult();
         evaluatedLocationResult.position = smallestOvalPosition;

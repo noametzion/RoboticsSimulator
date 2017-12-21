@@ -156,4 +156,18 @@ public class PolygonIntersection {
 
         return new ConvexPolygon2D(orderClockwise( clippedCorners));
     }
+
+    public Position getCenterPositionOfPolygon(ConvexPolygon2D poly){
+        double posX=0;
+        double posY=0;
+        for (Position p: poly.corners
+             ) {
+            posX+=p.x;
+            posY+= p.y;
+        }
+        posX/=poly.corners.size();
+        posY/=poly.corners.size();
+
+        return new Position(posX,posY);
+    }
 }

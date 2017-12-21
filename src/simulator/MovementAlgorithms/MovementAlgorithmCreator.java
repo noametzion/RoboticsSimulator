@@ -22,6 +22,10 @@ public class MovementAlgorithmCreator {
         {
             return new NAgentsMovementAlgorithem();
         }
+        else if(movementAlgorithmName.equals("NagentsMove2Row"))
+        {
+            return new NAgentsMovementAlgorithem2Rows();
+        }
         else
             throw new Exception("Wrong movement algorithm name");
     }
