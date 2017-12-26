@@ -67,17 +67,27 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
             }
             double spanError = this.calculateSpanErrorInDegrees(pair);
 
-            EvaluationArcher evaluatedArcher;
+            EvaluationArcher evaluatedArcher = null;
 
             if (pair.getKey() != null) {
-                evaluatedArcher = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent, rangeError, spanError);
+                // To avoid evaluation by unknown position;
+                if(pair.getKey().myPosition != null)
+                {
+                    evaluatedArcher = new EvaluationArcher(pair.getKey().myPosition, pair.getKey().azimuthToOtherAgent, pair.getKey().distanceToOtherAgent, rangeError, spanError);
+                }
             }
             else{
-                double correctAzimuth = Util.set0to359(pair.getValue().azimuthToOtherAgent + 180);
-                evaluatedArcher = new EvaluationArcher(pair.getValue().myPosition, correctAzimuth, pair.getValue().distanceToOtherAgent, rangeError, spanError);
+                // To avoid evaluation by unknown position;
+                if(pair.getValue().otherPosition != null)
+                {
+                    double correctAzimuth = Util.set0to359(pair.getValue().azimuthToOtherAgent + 180);
+                    evaluatedArcher = new EvaluationArcher(pair.getValue().otherPosition, correctAzimuth, pair.getValue().distanceToOtherAgent, rangeError, spanError);
+                }
             }
 
-            evaluatedOvals.add(evaluatedArcher);
+            if(evaluatedArcher!=null) {
+                evaluatedOvals.add(evaluatedArcher);
+            }
         }
 
         return evaluatedOvals;

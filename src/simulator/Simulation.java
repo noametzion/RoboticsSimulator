@@ -109,7 +109,8 @@ public class Simulation {
     private List<Pair<AgentViewDetails, AgentViewDetails>> getCorrectKeyValuePairsList(int agentId,List<Pair<AgentViewDetails, AgentViewDetails>> oldList){
         List<Pair<AgentViewDetails, AgentViewDetails>> correctKeyValueList= new ArrayList<>();
         for(Pair<AgentViewDetails, AgentViewDetails> pair: oldList) {
-            if ((pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) || pair.getKey() == null ) {
+            if ((pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) || (pair.getValue() != null && pair.getValue().agentNumberTo == agentId)) {
+                //if ((pair.getKey() != null && pair.getKey().agentNumberFrom == agentId) || pair.getKey() == null ) {
                 AgentViewDetails newKey = pair.getValue();
                 AgentViewDetails newValue = pair.getKey();
                 correctKeyValueList.add(new Pair<>(newKey, newValue));
@@ -133,7 +134,7 @@ public class Simulation {
             for (DetectionSensor.Detection agentDetection : agentDetections) {
                 AgentViewDetails details = new AgentViewDetails(agent.getSerialNumber(),
                         agentDetection.agentSerialNumber, agent.getEvaluatedPosition(), agent.getHeading(),
-                        agentDetection.azimuthWithError(), agentDetection.rangeWithError(),agentDetection.errorPercent,((DefensingAgent)agent).myTurnToMove );
+                        agentDetection.azimuthWithError(), agentDetection.rangeWithError(),agentDetection.errorPercent,((DefensingAgent)agent).myTurnToMove, agentDetection.defensingAgent.getEvaluatedPosition());
                 agentsViewDetails[agent.getSerialNumber() - 1][agentDetection.agentSerialNumber - 1] = details;
             }
         }
@@ -158,11 +159,13 @@ public class Simulation {
             List<Pair<AgentViewDetails,AgentViewDetails>> currentAgentViewsList = new ArrayList<>();
             for (Pair<AgentViewDetails, AgentViewDetails> viewDetailsPair:detections) {
                 //TODO: Check the case of agent number from
-                if(viewDetailsPair.getKey() != null && (viewDetailsPair.getKey().getAgentNumberTo == i || viewDetailsPair.getKey().agentNumberFrom == i))
+                //if(viewDetailsPair.getKey() != null && (viewDetailsPair.getKey().getAgentNumberTo == i))
+                 if(viewDetailsPair.getKey() != null && (viewDetailsPair.getKey().agentNumberTo == i || viewDetailsPair.getKey().agentNumberFrom == i))
                 {
                     currentAgentViewsList.add(viewDetailsPair);
                 }
-                else if(viewDetailsPair.getValue() != null && (viewDetailsPair.getValue().getAgentNumberTo == i || viewDetailsPair.getValue().agentNumberFrom == i))
+                //if(viewDetailsPair.getValue() != null && (viewDetailsPair.getValue().getAgentNumberTo == i))
+                else if(viewDetailsPair.getValue() != null && (viewDetailsPair.getValue().agentNumberTo == i || viewDetailsPair.getValue().agentNumberFrom == i))
                 {
                     currentAgentViewsList.add(viewDetailsPair);
                 }
