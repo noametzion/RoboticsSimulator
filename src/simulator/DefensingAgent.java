@@ -38,8 +38,8 @@ public class DefensingAgent extends Agent {
 
 	private void addLocationErrorWhenTurnAround()
 	{
-		double x1=p.x+Util.GetRandomAdditionalError(movementErrorPercent);
-		double y1=p.y+Util.GetRandomAdditionalError(movementErrorPercent);
+		double x1=p.x+Util.GetRandomAdditionalError(movementErrorPercent, ErrorType.Ramdom);
+		double y1=p.y+Util.GetRandomAdditionalError(movementErrorPercent, ErrorType.Ramdom);
 		p.x=x1;
 		p.y=y1;
 	}

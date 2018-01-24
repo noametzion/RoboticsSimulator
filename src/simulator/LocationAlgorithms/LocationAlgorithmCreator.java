@@ -21,6 +21,9 @@ public class LocationAlgorithmCreator {
         else if(locationAlgorithmName.equals("intersection")){
             return new IntersectionLocationAlgorithm();
         }
+        else if(locationAlgorithmName.equals("calibration")){
+            return new CalibrationLocationAlgorithm();
+        }
         else
             throw new Exception("Wrong location algorithm name");
     }

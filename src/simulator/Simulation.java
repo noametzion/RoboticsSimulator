@@ -29,6 +29,7 @@ public class Simulation {
     public void InitSimulationSettings()
     {
         movementAlgorithm.SetAgentsTypes(agents);
+        locationAlgorithm.setNumberOfAgents(agents.size());
         for (Agent agent: agents) {
             agent.setEvaluatedPosition(new Position(agent.getPosition().x, agent.getPosition().y));
         }

@@ -18,4 +18,5 @@ public interface ILocationAlgorithm {
     EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs);
     void setCVariableInFunction(double c);
     void setMeasurementDeviation(double deviation);
+    void setNumberOfAgents(int numberOfAgents);
 }

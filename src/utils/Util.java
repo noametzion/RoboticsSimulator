@@ -1,6 +1,7 @@
 package utils;
 
 import simulator.DetectionSensor.Detection;
+import simulator.ErrorType;
 import view.Position;
 
 
@@ -86,14 +87,20 @@ public class Util {
 	}
 
 
-	public static double GetRandomError(int errorPercent) {
+	public static double GetRandomError(int errorPercent, ErrorType errorType) {
 		if (errorPercent != 0) {
 			double percent= (double)errorPercent/100.0;
 			double minRange = 1.00 - percent;
 			double maxRange = 1.00 + percent;
-			Random rand = new Random();
-			double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
-			return randValue;
+			if (errorType == ErrorType.Ramdom) {
+				Random rand = new Random();
+				double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
+				return randValue;
+			}
+			else {
+				double fixedValue = 1.00 + percent/2;
+				return fixedValue;
+			}
 		}
 		return 1;
 	}
@@ -110,16 +117,22 @@ public class Util {
 //		return randValue;
 //	}
 
-	public static  double GetRandomAdditionalError(int errorPercent) {
+	public static  double GetRandomAdditionalError(int errorPercent, ErrorType errorType) {
 		if (errorPercent == 0)
 		{
 			return 0;
 		}
 		double minRange = - Util.ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(errorPercent) ;
 		double maxRange = Util.ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(errorPercent);
-		Random rand = new Random();
-		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
-		return randValue;
+		if(errorType == ErrorType.Ramdom) {
+			Random rand = new Random();
+			double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
+			return randValue;
+		}
+		else {
+			double fixedValue = maxRange/2;
+			return fixedValue;
+		}
 	}
 
 	//each percentage of deviation is 1/10 degree of azimuth error

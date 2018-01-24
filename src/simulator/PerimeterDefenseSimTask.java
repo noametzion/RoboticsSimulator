@@ -26,7 +26,7 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 	int minRange = 0;
 	double c;
 
-	public PerimeterDefenseSimTask(String scenatioFileName, int deviation, int movementDeviation,double c) {
+	public PerimeterDefenseSimTask(String scenatioFileName, int deviation, int movementDeviation,double c) throws IllegalArgumentException{
 		Drawables.reset();
 		try {
 			// Create simulation
@@ -53,13 +53,29 @@ public class PerimeterDefenseSimTask implements SimulationTask {
 			//double sensorDeviation = Double.parseDouble(in.readLine().split(" ")[2]);
 
 
+			// Get Error type
+			line=in.readLine();
+			String errorTypeName = line.split(" ")[1];
+			ErrorType errorType;
+			if (errorTypeName.equals("fixed"))
+			{
+				errorType = ErrorType.Fixed;
+			}
+			else if(errorTypeName.equals("random"))
+			{
+				errorType = ErrorType.Ramdom;
+			}
+			else {
+				throw new IllegalArgumentException("ERROR Should be FIXED or RANDOM");
+			}
+
 			// Create agents
 			int numberOfAgents=Integer.parseInt(in.readLine().split(" ")[1]);
 			simulation.movementAlgorithm.setNumOfAgents(numberOfAgents);
 			ArrayList<Position> agentPositions = simulation.movementAlgorithm.CalculateAgentPositions(positionDistance, sensorRange, sensorSpan);
 			for(int i=0;i<numberOfAgents;i++)
 			{
-				DetectionSensor sensor = new DetectionSensor(0, sensorRange, sensorSpan ,minRange, deviation);
+				DetectionSensor sensor = new DetectionSensor(0, sensorRange, sensorSpan ,minRange, deviation, errorType);
 				simulation.addAgent(new DefensingAgent(agentPositions.get(i).x, agentPositions.get(i).y , 0 , sensor, movementDeviation));
 			}
 

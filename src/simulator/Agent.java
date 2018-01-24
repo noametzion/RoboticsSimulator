@@ -63,7 +63,7 @@ public class Agent implements SimDrawable {
     }
 
     public void setHeading(double heading) {
-        this.heading = Util.set0to359(heading + Util.GetRandomAdditionalError(this.movementErrorPercent));
+        this.heading = Util.set0to359(heading + Util.GetRandomAdditionalError(this.movementErrorPercent, ErrorType.Ramdom));
         if(headingDependents!=null)
             for(HeadingDependent hd : headingDependents){
                 hd.updateHeading(this.heading);
@@ -84,8 +84,8 @@ public class Agent implements SimDrawable {
     }
 
     public void step(){
-        double x1=p.x+(speed * Math.cos(Math.toRadians(heading-90)))*Util.GetRandomError(movementErrorPercent);
-        double y1=p.y+(speed * Math.sin(Math.toRadians(heading-90)))*Util.GetRandomError(movementErrorPercent);
+        double x1=p.x+(speed * Math.cos(Math.toRadians(heading-90)))*Util.GetRandomError(movementErrorPercent, ErrorType.Ramdom);
+        double y1=p.y+(speed * Math.sin(Math.toRadians(heading-90)))*Util.GetRandomError(movementErrorPercent, ErrorType.Ramdom);
         p.x=x1;
         p.y=y1;
     }

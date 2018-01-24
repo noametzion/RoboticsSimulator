@@ -42,6 +42,11 @@ public class AverageLocationAlgorithm implements ILocationAlgorithm {
 
     }
 
+    @Override
+    public void setNumberOfAgents(int numberOfAgents) {
+
+    }
+
     private List<Position> GetEvaluatedPositionsFromAllAgents(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs){
         List<Position> evaluatedPositions = new ArrayList<>();
         for (Pair<AgentViewDetails, AgentViewDetails> viewDetailPair:viewDetailPairs) {

@@ -1,9 +1,9 @@
 package simulator.LocationAlgorithms;
 
-import simulator.LocationAlgorithms.EvaluationShapes.EvaluationArcher;
-import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationArcher;
+import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import utils.ConvexPolygon2D;
 import utils.PolygonIntersection;
 import utils.Util;
@@ -12,7 +12,7 @@ import view.Position;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
+public class IntersectionLocationAlgorithmVersionTwo implements ILocationAlgorithm {
 
     private double measurementDeviation;
 
@@ -139,7 +139,6 @@ public class IntersectionLocationAlgorithm implements ILocationAlgorithm {
 
     @Override
     public void setNumberOfAgents(int numberOfAgents) {
-
     }
 
 }

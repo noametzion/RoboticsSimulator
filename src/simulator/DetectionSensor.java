@@ -31,17 +31,18 @@ public class DetectionSensor implements HeadingDependent {
 
 		public double azimuthWithError() {
 
-			return azimuth + Util.GetRandomAdditionalError(this.errorPercent);
+			return azimuth + Util.GetRandomAdditionalError(this.errorPercent, errorType);
 		}
 
 		public double rangeWithError() {
-			return range * Util.GetRandomError(errorPercent);
+			return range * Util.GetRandomError(errorPercent, errorType);
 		}
 
 
 
 }
 
+	ErrorType errorType;
 	double heading;	// degrees
 	public double sensorRange;
 	double minRange;
@@ -50,13 +51,13 @@ public class DetectionSensor implements HeadingDependent {
 	double deviation;
 	int errorPercent;
 
-	public DetectionSensor(int headingOffset,double range, double span,double minRange, int errorPercent) {
+	public DetectionSensor(int headingOffset,double range, double span,double minRange, int errorPercent, ErrorType errorType) {
 		this.offset=headingOffset;
 		this.sensorRange =range;
 		this.sensorSpan =span;
 		this.minRange=minRange;
 		this.errorPercent=errorPercent;
-
+		this.errorType = errorType;
 	}
 
 
