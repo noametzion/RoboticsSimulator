@@ -3,8 +3,8 @@ package simulator.LocationAlgorithms;
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
 import simulator.LocationAlgorithms.EvaluationShapes.EvaluationPoint;
-import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
 import utils.Util;
+import view.Position;
 
 import java.util.*;
 
@@ -36,12 +36,20 @@ public class CalibrationLocationAlgorithm implements ILocationAlgorithm {
             // Split  error - between pair
             SplitErrorBetweenPair(numberOfAgents);
 
-            // Split error - between agents
-            //SplitErrorBetweenAgents();
-
             // Recalculate
             RecalculateEvaluatedPoints();
         }
+
+        // Split error - between agents
+        Position finalPosition;
+        try {
+            finalPosition = SplitErrorBetweenAgents(numberOfAgents);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+
+        // Recalculate
+        RecalculateEvaluatedPoints();
 
         EvaluatedLocationResult result = new EvaluatedLocationResult();
         result.position = evaluatedPoints.get(1).getKey().center;
@@ -57,10 +65,10 @@ public class CalibrationLocationAlgorithm implements ILocationAlgorithm {
     private void RecalculateEvaluatedPoints() {
         for (Pair<EvaluationPoint, EvaluationPoint> pair:
              evaluatedPoints) {
-            pair.getKey().recalculateEvaluationPointsWithError(finalEvaluatedRangeErrorByAgent.get(pair.getKey().featureAgentNumber),
-                    finalEvaluatedAzimuthErrorByAgent.get(pair.getKey().featureAgentNumber));
-            pair.getValue().recalculateEvaluationPointsWithError(finalEvaluatedRangeErrorByAgent.get(pair.getValue().featureAgentNumber),
-                    finalEvaluatedAzimuthErrorByAgent.get(pair.getValue().featureAgentNumber));
+            pair.getKey().recalculateEvaluationPointsWithError(finalEvaluatedRangeErrorByAgent.get(pair.getKey().measuringAgentNumber),
+                    finalEvaluatedAzimuthErrorByAgent.get(pair.getKey().measuringAgentNumber));
+            pair.getValue().recalculateEvaluationPointsWithError(finalEvaluatedRangeErrorByAgent.get(pair.getValue().measuringAgentNumber),
+                    finalEvaluatedAzimuthErrorByAgent.get(pair.getValue().measuringAgentNumber));
 
         }
     }
@@ -135,25 +143,25 @@ public class CalibrationLocationAlgorithm implements ILocationAlgorithm {
 
                 if(isKeyRangeBigger) {
                     additionalEvaluatedRangeErrorByAgent.put(
-                            pair.getKey().featureAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getKey().featureAgentNumber)
+                            pair.getKey().measuringAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getKey().measuringAgentNumber)
                                     - (rangeError / 2));
                     additionalEvaluatedRangeErrorByAgent.put(
-                            pair.getValue().featureAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getValue().featureAgentNumber)
+                            pair.getValue().measuringAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getValue().measuringAgentNumber)
                                     + (rangeError / 2));
                 }
                 else {
                     additionalEvaluatedRangeErrorByAgent.put(
-                            pair.getKey().featureAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getKey().featureAgentNumber)
+                            pair.getKey().measuringAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getKey().measuringAgentNumber)
                                     + (rangeError / 2));
                     additionalEvaluatedRangeErrorByAgent.put(
-                            pair.getValue().featureAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getValue().featureAgentNumber)
+                            pair.getValue().measuringAgentNumber, additionalEvaluatedRangeErrorByAgent.get(pair.getValue().measuringAgentNumber)
                                     - (rangeError / 2));
                 }
 
-                additionalEvaluatedRangeErrorByAgentCounter.put(pair.getKey().featureAgentNumber,
-                        additionalEvaluatedRangeErrorByAgentCounter.get(pair.getKey().featureAgentNumber) + 1);
-                additionalEvaluatedRangeErrorByAgentCounter.put(pair.getValue().featureAgentNumber,
-                        additionalEvaluatedRangeErrorByAgentCounter.get(pair.getValue().featureAgentNumber) + 1);
+                additionalEvaluatedRangeErrorByAgentCounter.put(pair.getKey().measuringAgentNumber,
+                        additionalEvaluatedRangeErrorByAgentCounter.get(pair.getKey().measuringAgentNumber) + 1);
+                additionalEvaluatedRangeErrorByAgentCounter.put(pair.getValue().measuringAgentNumber,
+                        additionalEvaluatedRangeErrorByAgentCounter.get(pair.getValue().measuringAgentNumber) + 1);
 
 
                 // Azimuth
@@ -174,32 +182,94 @@ public class CalibrationLocationAlgorithm implements ILocationAlgorithm {
                 if (isKeyAzimuthBigger)
                 {
                     additionalEvaluatedAzimuthErrorByAgent.put(
-                            pair.getKey().featureAgentNumber,
-                           additionalEvaluatedAzimuthErrorByAgent.get(pair.getKey().featureAgentNumber)
+                            pair.getKey().measuringAgentNumber,
+                           additionalEvaluatedAzimuthErrorByAgent.get(pair.getKey().measuringAgentNumber)
                                     - (azimuthError / 2));
                     additionalEvaluatedAzimuthErrorByAgent.put(
-                    pair.getValue().featureAgentNumber,
-                            additionalEvaluatedAzimuthErrorByAgent.get(pair.getValue().featureAgentNumber)
+                    pair.getValue().measuringAgentNumber,
+                            additionalEvaluatedAzimuthErrorByAgent.get(pair.getValue().measuringAgentNumber)
                             + (azimuthError / 2));
                 }
                 else {
                     additionalEvaluatedAzimuthErrorByAgent.put(
-                            pair.getKey().featureAgentNumber,
-                            additionalEvaluatedAzimuthErrorByAgent.get(pair.getKey().featureAgentNumber)
+                            pair.getKey().measuringAgentNumber,
+                            additionalEvaluatedAzimuthErrorByAgent.get(pair.getKey().measuringAgentNumber)
                                     + (azimuthError / 2));
                     additionalEvaluatedAzimuthErrorByAgent.put(
-                            pair.getValue().featureAgentNumber,
-                            additionalEvaluatedAzimuthErrorByAgent.get(pair.getValue().featureAgentNumber)
+                            pair.getValue().measuringAgentNumber,
+                            additionalEvaluatedAzimuthErrorByAgent.get(pair.getValue().measuringAgentNumber)
                                     - (azimuthError / 2));
                 }
 
-                additionalEvaluatedAzimuthErrorByAgentCounter.put(pair.getKey().featureAgentNumber,
-                        additionalEvaluatedAzimuthErrorByAgentCounter.get(pair.getKey().featureAgentNumber) + 1);
-                additionalEvaluatedAzimuthErrorByAgentCounter.put(pair.getValue().featureAgentNumber,
-                        additionalEvaluatedAzimuthErrorByAgentCounter.get(pair.getValue().featureAgentNumber) + 1);
+                additionalEvaluatedAzimuthErrorByAgentCounter.put(pair.getKey().measuringAgentNumber,
+                        additionalEvaluatedAzimuthErrorByAgentCounter.get(pair.getKey().measuringAgentNumber) + 1);
+                additionalEvaluatedAzimuthErrorByAgentCounter.put(pair.getValue().measuringAgentNumber,
+                        additionalEvaluatedAzimuthErrorByAgentCounter.get(pair.getValue().measuringAgentNumber) + 1);
             }
         }
 
+        // Take average
+        CalculateAverageErrors(numberOfAgents);
+    }
+
+    private Position SplitErrorBetweenAgents(int numberOfAgents) throws Exception{
+        InitAdditionalErrorLists(numberOfAgents);
+        // Take firstPosition
+        EvaluationPoint ep;
+        if (evaluatedPoints.get(0).getKey()!= null)
+        {
+            ep = evaluatedPoints.get(0).getKey();
+        }
+        else if (evaluatedPoints.get(0).getValue() != null){
+            ep = evaluatedPoints.get(0).getValue();
+        }
+        else {
+            throw new Exception("Key and Value both null - ERROR!!!");
+        }
+
+        for (int i = 0; i < 100; i++) {
+            for (Pair<EvaluationPoint, EvaluationPoint> pair :
+                    evaluatedPoints) {
+                EvaluationPoint evaluationPointToChange;
+                boolean isKey = false;
+                if (pair.getKey() != null) {
+                    evaluationPointToChange = pair.getKey();
+                    isKey = true;
+                } else if (pair.getValue() != null) {
+                    evaluationPointToChange = pair.getValue();
+                } else {
+                    throw new Exception("Key and Value both null - ERROR!!!");
+                }
+
+                // Range
+                // TODO: check if featureAgentNumberIsCorrect!!
+                double rangeError = CalculateRangeErrorByPoints(ep.center, evaluationPointToChange);
+                additionalEvaluatedRangeErrorByAgent.put(
+                        evaluationPointToChange.measuringAgentNumber, additionalEvaluatedRangeErrorByAgent.get(evaluationPointToChange.measuringAgentNumber)
+                                + (rangeError / numberOfAgents));
+                additionalEvaluatedRangeErrorByAgentCounter.put(
+                        evaluationPointToChange.measuringAgentNumber, additionalEvaluatedRangeErrorByAgentCounter.get(evaluationPointToChange.measuringAgentNumber) + 1);
+
+                // Span
+                double spanError = CalculateSpanErrorByPoints(ep.center, evaluationPointToChange);
+                additionalEvaluatedAzimuthErrorByAgent.put(
+                        evaluationPointToChange.measuringAgentNumber, additionalEvaluatedAzimuthErrorByAgent.get(evaluationPointToChange.measuringAgentNumber)
+                                + (spanError / numberOfAgents));
+                additionalEvaluatedAzimuthErrorByAgentCounter.put(
+                        evaluationPointToChange.measuringAgentNumber, additionalEvaluatedAzimuthErrorByAgentCounter.get(evaluationPointToChange.measuringAgentNumber) + 1);
+
+                // TODO: check if modifying the position here helps..
+            }
+
+            // Take average
+            CalculateAverageErrors(numberOfAgents);
+        }
+
+        return ep.center;
+
+    }
+
+    private void CalculateAverageErrors(int numberOfAgents) {
         // Take average
         for (int i = 1; i <= numberOfAgents; i++)
         {
@@ -209,18 +279,34 @@ public class CalibrationLocationAlgorithm implements ILocationAlgorithm {
                                 additionalEvaluatedRangeErrorByAgentCounter.get(i));
             }
             if(additionalEvaluatedAzimuthErrorByAgentCounter.get(i) != 0)
-            finalEvaluatedAzimuthErrorByAgent.put(i,
-                    additionalEvaluatedAzimuthErrorByAgent.get(i) /
-                            additionalEvaluatedAzimuthErrorByAgentCounter.get(i));
+                finalEvaluatedAzimuthErrorByAgent.put(i,
+                        additionalEvaluatedAzimuthErrorByAgent.get(i) /
+                                additionalEvaluatedAzimuthErrorByAgentCounter.get(i));
         }
     }
 
-    private void SplitErrorBetweenAgents() {
-        for (Pair<EvaluationPoint, EvaluationPoint> pair :
-                evaluatedPoints) {
-            if (pair.getKey() != null && pair.getValue() != null) {
-            }
+    private double CalculateSpanErrorByPoints(Position p, EvaluationPoint evaluationPoint) {
+        Position fp = evaluationPoint.featurePosition;
+        double spanFromFeatureToPosition = Util.getAzimuth(fp.x, fp.y, p.x, p.y);
+        double spanFromFeatureToCenter = evaluationPoint.featureAzimuthToCenter;
+
+        double error = spanFromFeatureToPosition - spanFromFeatureToCenter;
+
+        if(error < -180){
+            error = error + 360;
         }
+        else if (error > 180){
+            error = error - 360;
+        }
+        return  error;
+    }
+
+    private double CalculateRangeErrorByPoints(Position p, EvaluationPoint evaluationPoint) {
+        Position fp = evaluationPoint.featurePosition;
+        double rangeFromFeatureToPosition = Math.sqrt((p.x-fp.x)*(p.x-fp.x) + (p.y-fp.y)*(p.y-fp.y));
+        double rangeFromFeatureToCenter = evaluationPoint.featureRangeToCenter;
+        double error = rangeFromFeatureToPosition - rangeFromFeatureToCenter;
+        return error;
     }
 
 

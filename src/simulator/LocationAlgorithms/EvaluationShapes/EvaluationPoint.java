@@ -2,8 +2,6 @@ package simulator.LocationAlgorithms.EvaluationShapes;
 
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.graphics.Color;
-import simulator.Agent;
-import simulator.DefensingAgent;
 import utils.Util;
 import view.Position;
 
@@ -18,12 +16,12 @@ public class EvaluationPoint extends EvaluationShape {
     public Position featurePosition;
     public double featureAzimuthToCenter;
     public double featureRangeToCenter;
-    public int featureAgentNumber;
+    public int measuringAgentNumber;
 
     // Feature = other agent, center = evaluated agent
     public EvaluationPoint(int featureAgentNumber, Position featurePosition, double featureAzimuthToCenter, double featureRangeToCenter){
 
-        this.featureAgentNumber = featureAgentNumber;
+        this.measuringAgentNumber = featureAgentNumber;
         this.featurePosition = featurePosition;
         this.featureAzimuthToCenter = featureAzimuthToCenter;
         this.featureRangeToCenter = featureRangeToCenter;
