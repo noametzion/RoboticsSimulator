@@ -23,5 +23,18 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/geotools-18.1-bin/geotools-18.1" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/geotools-18.1-bin/geotools-18.1" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Downloads/geotools-18.1-bin/geotools-18.1" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Downloads/geotools-18.1-bin/geotools-18.1" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
