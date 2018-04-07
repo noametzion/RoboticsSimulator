@@ -21,6 +21,12 @@ public class LocationAlgorithmCreator {
         else if(locationAlgorithmName.equals("intersection")){
             return new IntersectionLocationAlgorithm();
         }
+        else if(locationAlgorithmName.equals("fixEstimationAlgorithm")){
+            return new FixEstimationAlgorithm();
+        }
+        else if(locationAlgorithmName.equals("fixEstimationAlgorithmV2")){
+            return new FixEstimationAlgorithmV2();
+        }
         else
             throw new Exception("Wrong location algorithm name");
     }

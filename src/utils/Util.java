@@ -89,7 +89,9 @@ public class Util {
 	public static double GetRandomError(int errorPercent) {
 		if (errorPercent != 0) {
 			double percent= (double)errorPercent/100.0;
-			double minRange = 1.00 - percent;
+			//double minRange = 1.00 - percent;
+			//only positive error
+			double minRange =1;
 			double maxRange = 1.00 + percent;
 			Random rand = new Random();
 			double randValue = minRange + (maxRange - minRange) * rand.nextDouble();
@@ -115,7 +117,9 @@ public class Util {
 		{
 			return 0;
 		}
-		double minRange = - Util.ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(errorPercent) ;
+		//double minRange = - Util.ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(errorPercent) ;
+		//only positive error
+		double minRange =0;
 		double maxRange = Util.ConvertBetweenPercentageDeviationAndTrueDeviationByDefinition(errorPercent);
 		Random rand = new Random();
 		double randValue = minRange + (maxRange - minRange) * rand.nextDouble();

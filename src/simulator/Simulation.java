@@ -4,6 +4,7 @@ import simulator.LocationAlgorithms.ILocationAlgorithm;
 import simulator.MovementAlgorithms.MovementAlgorithm;
 import view.Position;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,14 +44,15 @@ public class Simulation {
             //if (!Double.isNaN(positionsEvaluations.get(agent.serialNumber).x) &&
             // !Double.isNaN(positionsEvaluations.get(agent.serialNumber).y)) {
             if (((DefensingAgent) agent).myTurnToMove == true) {
-                agent.setEvaluatedPosition(evaluatedPositions.get(agent.serialNumber).position);
+                if(evaluatedPositions.get(agent.serialNumber).position!=null)
+                    agent.setEvaluatedPosition(evaluatedPositions.get(agent.serialNumber).position);
                 agent.setEvaluationShapes(evaluatedPositions.get(agent.serialNumber).evaluationShapes);
             }
         }
         if (movementAlgorithm.ShouldChangeMove) {
             movementAlgorithm.ChangeMove(this.agents);
         }
-//
+
 //        System.out.println("----------------------");
 //        DecimalFormat df = new DecimalFormat("#.####");
 //        for (Agent agent : this.agents) {

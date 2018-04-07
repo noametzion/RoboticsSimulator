@@ -149,9 +149,11 @@ public class PolygonIntersection {
         }
 
         //Add  the intersection points
-        for (int i = 0, next = 1; i < poly1.corners.size(); i++, next = (i + 1 == poly1.corners.size()) ? 0 : i + 1)
-        {
-            addPoints(clippedCorners, getIntersectionPoints(poly1.corners.get(i), poly1.corners.get(next), poly2));
+        if(poly1.corners.size()>1) {
+            for (int i = 0, next = 1; i < poly1.corners.size(); i++, next = (i + 1 == poly1.corners.size()) ? 0 : i + 1) {
+
+                addPoints(clippedCorners, getIntersectionPoints(poly1.corners.get(i), poly1.corners.get(next), poly2));
+            }
         }
 
         return new ConvexPolygon2D(orderClockwise( clippedCorners));

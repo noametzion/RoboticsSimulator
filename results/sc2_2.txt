@@ -1,5 +1,5 @@
 Robots Position 0.5
-sensor span 180
+sensor span 220
 sensor distance 20
 sensor divationdetectors 0.1
 movement alg: NagentsMove
@@ -15,5 +15,5 @@ agents 10
 	20,6,0,0
 	20,6,0,0
 	20,6,0,0
-location alg average
+location alg intersection
 X
