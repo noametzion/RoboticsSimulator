@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="fix evaluation by other agent's location">
+    <list default="true" id="6ecf5769-7bc6-47f5-9070-d0838c2e4641" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/InterserctionShapeLocationAlgorithm.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/InterserctionShapeLocationAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationArcPolygon.java" afterPath="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationArcPolygon.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EvaluationArcPolygon.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EvaluationArcPolygon.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationArcPolygon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="406">
+              <caret line="75" column="82" lean-forward="false" selection-start-line="75" selection-start-column="82" selection-end-line="75" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Simulation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Simulation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulator/Simulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="891">
+              <caret line="94" column="28" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="28" />
               <folding>
                 <marker date="1516827146317" expanded="true" signature="8362:8532" ph="{...}" />
               </folding>
@@ -83,8 +82,8 @@
       <file leaf-file-name="EvaluationShape.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+            <state relative-caret-position="399">
+              <caret line="27" column="60" lean-forward="true" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -102,7 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>res</find>
       <find>set</find>
       <find>/</find>
       <find>center</find>
@@ -132,6 +130,7 @@
       <find>gra</find>
       <find>&lt;evaluationshape&gt;</find>
       <find>getran</find>
+      <find>d</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,10 +196,10 @@
         <option value="$PROJECT_DIR$/src/simulator/Simulation.java" />
         <option value="$PROJECT_DIR$/src/utils/Util.java" />
         <option value="$PROJECT_DIR$/src/IGradable/IGradable.java" />
-        <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java" />
         <option value="$PROJECT_DIR$/src/utils/CoordinateGradeCalculator.java" />
         <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/InterserctionShapeLocationAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationArcPolygon.java" />
+        <option value="$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java" />
       </list>
     </option>
   </component>
@@ -850,7 +849,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521196068237</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add intersection shape algo">
+      <created>1523743014120</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1523743014120</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -947,7 +953,8 @@
     <MESSAGE value="adding polygon intersection calculation" />
     <MESSAGE value="fix abstract drawing problem" />
     <MESSAGE value="fix evaluation by other agent's location" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix evaluation by other agent's location" />
+    <MESSAGE value="add intersection shape algo" />
+    <option name="LAST_COMMIT_MESSAGE" value="add intersection shape algo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1357,14 +1364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/InterserctionShapeLocationAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -1376,22 +1375,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationArcPolygon.java">
+    <entry file="file://$PROJECT_DIR$/src/simulator/Simulation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="891">
+          <caret line="94" column="28" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1516827146317" expanded="true" signature="8362:8532" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/Simulation.java">
+    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationShape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="399">
+          <caret line="27" column="60" lean-forward="true" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/LocationAlgorithms/EvaluationShapes/EvaluationArcPolygon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="75" column="82" lean-forward="false" selection-start-line="75" selection-start-column="82" selection-end-line="75" selection-end-column="82" />
           <folding>
-            <marker date="1516827146317" expanded="true" signature="8362:8532" ph="{...}" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

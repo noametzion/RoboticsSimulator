@@ -71,9 +71,9 @@ public class EvaluationArcPolygon extends EvaluationShape implements IGradable {
         e.gc.setForeground(new Color(null, 100, 0, 100));
         e.gc.drawPolygon(points);
 
-        e.gc.setForeground(new Color(null, 100, 0, 100));
+        e.gc.setForeground(new Color(null, 0, 200, 0));
         for (Position p: randomPositionsToDraw) {
-            e.gc.drawPoint((int)Math.round(x0 + p.x), (int)Math.round(y0 + p.y));
+            e.gc.drawPoint((int)Math.round(x0 + r * p.x), (int)Math.round(y0 + r *p.y));
         }
 
         //int cx = (int)Math.round(x0+center.x*r);
