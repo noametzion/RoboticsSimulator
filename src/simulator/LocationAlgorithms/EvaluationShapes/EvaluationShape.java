@@ -6,6 +6,7 @@ import view.Position;
 import view.SimDrawable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by נועם on 12/14/2017.
@@ -23,4 +24,6 @@ public abstract class EvaluationShape implements SimDrawable {
     }
 
     public abstract ArrayList<Position> GetEvaluationShapePositionsByOrder();
+
+    public List<Position> GetRandomPositions(){return null;}
 }

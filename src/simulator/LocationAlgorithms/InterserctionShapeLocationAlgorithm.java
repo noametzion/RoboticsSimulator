@@ -1,9 +1,12 @@
 package simulator.LocationAlgorithms;
 
+import IGradable.IGradable;
+import com.vividsolutions.jts.geom.Geometry;
 import javafx.util.Pair;
 import simulator.AgentViewDetails;
 import simulator.LocationAlgorithms.EvaluationShapes.EvaluationArcPolygon;
 import simulator.LocationAlgorithms.EvaluationShapes.EvaluationShape;
+import utils.CoordinateGradeCalculator;
 import utils.Util;
 import view.Position;
 
@@ -17,6 +20,7 @@ public class InterserctionShapeLocationAlgorithm implements ILocationAlgorithm{
 
     private double measurementDeviation;
     private double spanError;
+    private CoordinateGradeCalculator coordinateGradeCalculator = new CoordinateGradeCalculator();
 
     @Override
     public EvaluatedLocationResult CalculateEvaluatedPosition(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
@@ -25,7 +29,14 @@ public class InterserctionShapeLocationAlgorithm implements ILocationAlgorithm{
 
         List<EvaluationShape> evaluationShapes = CreateAllEvaluationPolygons(viewDetailPairs);
 
-        Position evaluatedPosition = GetIntersectionPoint(evaluationShapes);
+        List<Position> randomPositions = this.getRandomPositions(evaluationShapes);
+
+        Position evaluatedPosition = null;
+        try {
+            evaluatedPosition = FindBestPosition(randomPositions, evaluationShapes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         EvaluatedLocationResult result = new EvaluatedLocationResult();
         result.evaluationShapes = evaluationShapes;
@@ -34,8 +45,43 @@ public class InterserctionShapeLocationAlgorithm implements ILocationAlgorithm{
         return result;
     }
 
-    private Position GetIntersectionPoint(List<EvaluationShape> evaluationShapes) {
-        return evaluationShapes.get(0).getPosition();
+    private List<Position> getRandomPositions(List<EvaluationShape> evaluationShapes) {
+        List <Position> positions = new ArrayList<>();
+        for (EvaluationShape eShape : evaluationShapes ) {
+            positions.addAll(eShape.GetRandomPositions());
+        }
+        return positions;
+    }
+
+    private Position FindBestPosition(List<Position> randomPositions, List<EvaluationShape> evaluationShapes) throws Exception {
+        double bestGrade = 0;
+        Position bestPosition = null;
+        List<IGradable> gradableShapes = this.convertToGradables(evaluationShapes);
+        for (Position randomPosition : randomPositions) {
+            double curentGrade = this.coordinateGradeCalculator.GetGrade(gradableShapes, randomPosition);
+            if(curentGrade > bestGrade){
+                bestGrade = curentGrade;
+                bestPosition = randomPosition;
+            }
+        }
+        return bestPosition;
+        //return evaluationShapes.get(0).getPosition();
+    }
+
+    private List<IGradable> convertToGradables(List<EvaluationShape> evaluationShapes) {
+        List<IGradable> gradables = new ArrayList<IGradable>();
+        for (EvaluationShape shape :evaluationShapes) {
+            gradables.add((EvaluationArcPolygon)shape);
+        }
+        return gradables;
+    }
+
+    private Geometry UnionEvaluationArcs(List<EvaluationShape> evaluationShapes) {
+        Geometry geometry = ((EvaluationArcPolygon)evaluationShapes.get(0)).getEvaluationPolygon();
+        for (int i =1 ; i<evaluationShapes.size(); i++){
+            geometry.union(((EvaluationArcPolygon)evaluationShapes.get(i)).getEvaluationPolygon());
+        }
+        return geometry;
     }
 
     private List<EvaluationShape> CreateAllEvaluationPolygons(List<Pair<AgentViewDetails, AgentViewDetails>> viewDetailPairs) {
