@@ -38,6 +38,10 @@ public class InterserctionShapeLocationAlgorithm implements ILocationAlgorithm{
             e.printStackTrace();
         }
 
+        for (EvaluationShape es: evaluationShapes) {
+            ((EvaluationArcPolygon)es).setBest(evaluatedPosition);
+
+        }
         EvaluatedLocationResult result = new EvaluatedLocationResult();
         result.evaluationShapes = evaluationShapes;
         result.position = evaluatedPosition;

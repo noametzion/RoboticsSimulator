@@ -76,6 +76,9 @@ public class EvaluationArcPolygon extends EvaluationShape implements IGradable {
             e.gc.drawPoint((int)Math.round(x0 + r * p.x), (int)Math.round(y0 + r *p.y));
         }
 
+        e.gc.setForeground(new Color(null, 200, 0, 200));
+        e.gc.drawOval((int)Math.round(x0 + r * best.x), (int)Math.round(y0 + r *best.y), 5, 5);
+
         //int cx = (int)Math.round(x0+center.x*r);
         //int cy = (int)Math.round(y0+center.y*r);
 
@@ -220,4 +223,11 @@ public class EvaluationArcPolygon extends EvaluationShape implements IGradable {
         }
         return randomPositions;
     }
+
+    private Position best;
+
+    public void setBest(Position bestPosition){
+        this.best =bestPosition;
+    }
+
 }
