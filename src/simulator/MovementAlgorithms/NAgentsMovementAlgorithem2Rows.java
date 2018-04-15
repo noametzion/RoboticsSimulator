@@ -54,7 +54,7 @@ public class NAgentsMovementAlgorithem2Rows extends MovementAlgorithm {
     protected void CheckDanger(DefensingAgent agent) {
         ArrayList<DetectionSensor.Detection> allDetections = agent.detect();
         for (DetectionSensor.Detection detection : allDetections) {
-            if ((detection.hisTurnToMove==true && agent.detectionSensor.sensorRange - detection.range < agent.detectionSensor.sensorRange/2) || (numOfStepsAgentMoved>=agent.detectionSensor.sensorRange*1.5) )
+            if ((detection.hisTurnToMove==true && agent.detectionSensor.sensorRange - detection.range < -1) || (numOfStepsAgentMoved>=agent.detectionSensor.sensorRange*1.5) )
                 agent.dangerDetected = true;
         }
 

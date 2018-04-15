@@ -2,11 +2,11 @@ Robots Position 0.5
 sensor span 345
 sensor distance 10
 sensor divationdetectors 0.1
-movement alg: NagentsMove
+movement alg: 3forwardV2
 agents 3
 	detection_deviation rotation_speed	rotation_error detection_deviation
 	10,6,10,10
 	0,6,0,0
 	0,6,0,0
-location alg angelDistanceDeviation
+location alg fixEstimationAlgorithmV2
 X

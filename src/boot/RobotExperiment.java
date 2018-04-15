@@ -61,6 +61,7 @@ public class RobotExperiment {
                 writer.write(agentLine + "\n");
                 writer.write(localization+ "\n");
                 reader.close();
+                System.out.println(file);
 
             } catch (IOException e) {
                 e.printStackTrace();
